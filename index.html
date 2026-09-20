@@ -1,0 +1,3177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>صفة الوضوء · دليل مرئي وتفاعلي موثق</title>
+<meta name="description" content="تطبيق عملي تفاعلي يوضح كيفية الوضوء خطوة بخطوة مع فيديو الشرح الرسمي المعتمد من رئاسة الشؤون الدينية بالمسجد الحرام والمسجد النبوي.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+/* ==========================================================================
+   CSS DESIGN SYSTEM - ISLAMIC LUXE & AQUA
+   ========================================================================== */
+:root {
+  --bg-base: #F4F8F8;
+  --bg-card: #FFFFFF;
+  --bg-card-subtle: rgba(255, 255, 255, 0.85);
+  --bg-stage: #0A242B;
+  --ink-primary: #082228;
+  --ink-secondary: #48646A;
+  --ink-tertiary: #7D979D;
+  --border-subtle: rgba(14, 138, 146, 0.16);
+  --border-strong: rgba(14, 138, 146, 0.35);
+
+  --water-primary: #0E8A92;
+  --water-glow: #24BAC4;
+  --water-soft: #DCF2F3;
+  --water-track: #C3E7E9;
+  
+  --gold-primary: #B79039;
+  --gold-glow: #D8B157;
+  --gold-soft: #F9F3E5;
+
+  --badge-bg: rgba(183, 144, 57, 0.12);
+  --badge-border: rgba(183, 144, 57, 0.3);
+
+  --shadow-sm: 0 4px 12px rgba(8, 34, 40, 0.05);
+  --shadow-md: 0 10px 30px rgba(8, 34, 40, 0.08);
+  --shadow-lg: 0 20px 48px rgba(8, 34, 40, 0.14);
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+  --radius-pill: 9999px;
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root[data-theme="dark"] {
+  --bg-base: #061418;
+  --bg-card: #0D2228;
+  --bg-card-subtle: rgba(13, 34, 40, 0.82);
+  --bg-stage: #041014;
+  --ink-primary: #E9F4F4;
+  --ink-secondary: #9DB4B8;
+  --ink-tertiary: #678387;
+  --border-subtle: rgba(56, 200, 208, 0.14);
+  --border-strong: rgba(56, 200, 208, 0.32);
+
+  --water-primary: #32B6BF;
+  --water-glow: #64E5ED;
+  --water-soft: #0E3137;
+  --water-track: #153E45;
+
+  --gold-primary: #DBB55D;
+  --gold-glow: #F3D27E;
+  --gold-soft: #272111;
+
+  --badge-bg: rgba(219, 181, 93, 0.12);
+  --badge-border: rgba(219, 181, 93, 0.35);
+
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 12px 34px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 24px 56px rgba(0, 0, 0, 0.5);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--ink-primary);
+  font-family: 'IBM Plex Sans Arabic', system-ui, -apple-system, sans-serif;
+  font-size: 16.5px;
+  line-height: 1.75;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(14, 138, 146, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(183, 144, 57, 0.06) 0%, transparent 40%);
+  background-attachment: fixed;
+  transition: background-color var(--transition-smooth), color var(--transition-smooth);
+}
+
+body[data-lang="en"], body[data-lang="fr"] {
+  font-family: 'Outfit', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  line-height: 1.68;
+}
+
+body[data-lang="ur"] {
+  font-family: 'Noto Naskh Arabic', 'IBM Plex Sans Arabic', serif;
+  font-size: 17.5px;
+  line-height: 2;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2.5px solid var(--water-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1160px;
+  margin-inline: auto;
+  padding-inline: 22px;
+}
+
+/* ==========================================================================
+   NAVIGATION BAR & HEADER
+   ========================================================================== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-card-subtle);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: all var(--transition-smooth);
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 14px;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-crest {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--water-primary), #09575C);
+  display: grid;
+  place-items: center;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(14, 138, 146, 0.35);
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-crest::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom right, rgba(255,255,255,0.3), transparent 60%);
+}
+
+.brand-crest svg {
+  width: 26px;
+  height: 26px;
+  position: relative;
+  z-index: 1;
+}
+
+.brand-info b {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink-primary);
+  line-height: 1.25;
+}
+
+.brand-info small {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--ink-tertiary);
+  font-weight: 500;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lang-selector {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  gap: 2px;
+  max-width: 520px;
+}
+
+.lang-selector button {
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-secondary);
+  white-space: nowrap;
+}
+
+.lang-selector button:hover {
+  color: var(--ink-primary);
+}
+
+.lang-selector button[aria-pressed="true"] {
+  background: var(--water-primary);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(14, 138, 146, 0.32);
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  color: var(--ink-secondary);
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.icon-btn:hover {
+  color: var(--ink-primary);
+  border-color: var(--water-primary);
+  transform: translateY(-1px);
+}
+
+.icon-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ==========================================================================
+   OFFICIAL ENDORSEMENT BANNER
+   ========================================================================== */
+.official-endorsement {
+  margin-top: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--badge-border);
+  border-radius: var(--radius-md);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+  background-image: linear-gradient(to right, var(--badge-bg), transparent);
+}
+
+.endorsement-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.endorsement-badge {
+  background: var(--gold-soft);
+  color: var(--gold-primary);
+  border: 1px solid var(--badge-border);
+  border-radius: var(--radius-pill);
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.endorsement-badge svg {
+  width: 15px;
+  height: 15px;
+}
+
+.endorsement-text {
+  font-size: 0.88rem;
+  color: var(--ink-secondary);
+  font-weight: 500;
+}
+
+.endorsement-text strong {
+  color: var(--ink-primary);
+}
+
+.endorsement-link {
+  font-size: 0.82rem;
+  color: var(--water-primary);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.endorsement-link:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   HERO INTRO & VIEW TOGGLE
+   ========================================================================== */
+.hero-intro {
+  padding-block: 28px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hero-header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.hero-title-box h1 {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink-primary);
+  margin-bottom: 6px;
+}
+
+.hero-title-box p {
+  color: var(--ink-secondary);
+  font-size: 1.08rem;
+  max-width: 64ch;
+}
+
+/* Mode Switcher Tabs */
+.view-mode-tabs {
+  display: inline-flex;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+  gap: 4px;
+  box-shadow: var(--shadow-sm);
+}
+
+.tab-btn {
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tab-btn svg {
+  width: 17px;
+  height: 17px;
+}
+
+.tab-btn:hover {
+  color: var(--ink-primary);
+}
+
+.tab-btn.active {
+  background: var(--water-primary);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(14, 138, 146, 0.35);
+}
+
+/* ==========================================================================
+   MAIN PLAYER CONTAINER (INTERACTIVE & VIDEO MODES)
+   ========================================================================== */
+.player-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: all var(--transition-smooth);
+}
+
+/* --- INTERACTIVE VIEW --- */
+.interactive-view {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+}
+
+.stage-wrapper {
+  background: var(--bg-stage);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 20px 24px;
+  min-height: 480px;
+  overflow: hidden;
+  border-inline-end: 1px solid var(--border-subtle);
+}
+
+/* Islamic Geometric & Water Ambient Effect */
+.stage-ambient {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 50% 30%, rgba(56, 200, 208, 0.15), transparent 65%),
+    radial-gradient(circle at 50% 90%, rgba(219, 181, 93, 0.08), transparent 50%);
+  pointer-events: none;
+}
+
+.stage-svg-box {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 280px);
+  display: flex;
+  justify-content: center;
+}
+
+svg#fig {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+}
+
+/* Base mannequin lines */
+.fig-base {
+  fill: rgba(255, 255, 255, 0.04);
+  stroke: rgba(255, 255, 255, 0.22);
+  stroke-width: 2.2;
+}
+
+.fig-limb {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.18);
+  stroke-width: 18;
+  stroke-linecap: round;
+}
+
+/* Animated Washing Zones */
+.z {
+  fill: var(--water-glow);
+  opacity: 0;
+  transition: opacity 0.35s ease, filter 0.35s ease;
+}
+
+.z.zs {
+  fill: none;
+  stroke: var(--water-glow);
+  stroke-width: 18;
+  stroke-linecap: round;
+}
+
+.z.zs.thin {
+  stroke-width: 7;
+}
+
+.z.on {
+  opacity: 1;
+  filter: drop-shadow(0 0 12px rgba(100, 229, 237, 0.8));
+  animation: waterGlow 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes waterGlow {
+  0% { opacity: 0.8; filter: drop-shadow(0 0 8px rgba(100, 229, 237, 0.6)); }
+  100% { opacity: 1; filter: drop-shadow(0 0 20px rgba(100, 229, 237, 0.95)); }
+}
+
+.stage-water-ripples {
+  position: absolute;
+  bottom: 24px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  z-index: 3;
+}
+
+.stage-water-ripples span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* --- INTERACTIVE CONTROLS & CONTENT PANEL --- */
+.panel-wrapper {
+  padding: 36px 36px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.step-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--water-soft);
+  color: var(--water-primary);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+/* Repetition Wash Tracker */
+.wash-counter-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 4px 10px;
+}
+
+.wash-counter-box small {
+  font-size: 0.82rem;
+  color: var(--ink-secondary);
+  font-weight: 600;
+  margin-inline-end: 4px;
+}
+
+.droplet-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  display: grid;
+  place-items: center;
+  color: var(--ink-tertiary);
+  transition: all var(--transition-fast);
+}
+
+.droplet-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+.droplet-btn.active {
+  background: var(--water-primary);
+  border-color: var(--water-primary);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(14, 138, 146, 0.4);
+  transform: scale(1.08);
+}
+
+.panel-header h2 {
+  font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: var(--ink-primary);
+}
+
+.panel-header p.step-instruction {
+  font-size: 1.12rem;
+  color: var(--ink-secondary);
+  line-height: 1.7;
+}
+
+/* Supplication Dua Box */
+.dua-box {
+  background: var(--gold-soft);
+  border: 1px solid var(--badge-border);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.dua-box[hidden] {
+  display: none !important;
+}
+
+.dua-arabic {
+  font-family: 'Amiri', 'Noto Naskh Arabic', serif;
+  font-size: 1.6rem;
+  line-height: 2;
+  color: var(--gold-primary);
+  direction: rtl;
+  text-align: start;
+  font-weight: 700;
+}
+
+.dua-translit {
+  font-size: 0.95rem;
+  color: var(--ink-secondary);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.dua-audio-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold-primary);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--badge-border);
+  background: var(--bg-card);
+}
+
+.dua-audio-action:hover {
+  background: var(--gold-primary);
+  color: #FFFFFF;
+}
+
+.dua-audio-action svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Step Auto-progress bar */
+.progress-track {
+  height: 5px;
+  background: var(--water-track);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 14px;
+}
+
+.progress-track i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--water-primary), var(--water-glow));
+}
+
+/* Player Navigation Controls */
+.control-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 12px;
+}
+
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  color: var(--ink-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-action:hover:not(:disabled) {
+  border-color: var(--water-primary);
+  transform: translateY(-1px);
+}
+
+.btn-action:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-action.main {
+  background: var(--water-primary);
+  border-color: var(--water-primary);
+  color: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(14, 138, 146, 0.35);
+}
+
+.btn-action.main:hover {
+  background: #09757C;
+}
+
+.btn-action svg {
+  width: 17px;
+  height: 17px;
+}
+
+[dir="rtl"] .flip-rtl {
+  transform: scaleX(-1);
+}
+
+/* Step Carousel Navigation */
+.steps-carousel {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 16px 24px;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-base);
+  scrollbar-width: thin;
+}
+
+.steps-carousel::-webkit-scrollbar {
+  height: 6px;
+}
+
+.steps-carousel::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 3px;
+}
+
+.step-chip {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  padding: 7px 16px 7px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink-secondary);
+  white-space: nowrap;
+  max-width: 220px;
+}
+
+.step-chip span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 160px;
+}
+
+[dir="rtl"] .step-chip {
+  padding: 7px 10px 7px 16px;
+}
+
+.step-chip em {
+  font-style: normal;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--water-soft);
+  color: var(--water-primary);
+  display: grid;
+  place-items: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.step-chip:hover {
+  border-color: var(--water-primary);
+  color: var(--ink-primary);
+}
+
+.step-chip[aria-current="step"] {
+  background: var(--water-primary);
+  border-color: var(--water-primary);
+  color: #FFFFFF;
+  box-shadow: 0 3px 10px rgba(14, 138, 146, 0.35);
+}
+
+.step-chip[aria-current="step"] em {
+  background: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+}
+
+.step-chip.done em {
+  background: var(--water-primary);
+  color: #FFFFFF;
+}
+
+/* --- VIDEO VIEW --- */
+.video-view {
+  display: none;
+  flex-direction: column;
+  padding: 24px;
+  gap: 18px;
+}
+
+.video-view.active {
+  display: flex;
+}
+
+.video-view-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.video-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
+  color: var(--gold-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.video-player-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #000000;
+  box-shadow: var(--shadow-lg);
+}
+
+.video-player-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.video-meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 18px;
+  background: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  color: var(--ink-secondary);
+}
+
+.video-source-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.video-source-info svg {
+  width: 20px;
+  height: 20px;
+  color: var(--water-primary);
+}
+
+/* ==========================================================================
+   EXTRA INFORMATION SECTIONS (SUNAN, NULLIFIERS, PROPHETIC WISDOM)
+   ========================================================================== */
+.section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.info-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 26px 28px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-title-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--water-soft);
+  color: var(--water-primary);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.card-title-icon.gold {
+  background: var(--gold-soft);
+  color: var(--gold-primary);
+}
+
+.card-title-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.info-card h3 {
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.info-card ul {
+  padding-inline-start: 22px;
+  color: var(--ink-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info-card p.note-text {
+  font-size: 0.9rem;
+  color: var(--ink-tertiary);
+  margin-top: auto;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 12px;
+}
+
+/* Hadith Quote Box */
+.hadith-quote-card {
+  margin-top: 36px;
+  background: linear-gradient(135deg, var(--bg-card), var(--bg-card-subtle));
+  border: 1px solid var(--badge-border);
+  border-radius: var(--radius-md);
+  padding: 28px 32px;
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.hadith-quote-card::before {
+  content: '“';
+  position: absolute;
+  top: -20px;
+  inset-inline-start: 20px;
+  font-size: 120px;
+  font-family: 'Amiri', serif;
+  color: var(--gold-primary);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.hadith-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--gold-soft);
+  color: var(--gold-primary);
+  border: 1px solid var(--badge-border);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.hadith-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.hadith-content b {
+  display: block;
+  font-size: 1.15rem;
+  color: var(--gold-primary);
+  font-family: 'Amiri', 'IBM Plex Sans Arabic', serif;
+  line-height: 1.8;
+  margin-bottom: 4px;
+}
+
+.hadith-content span {
+  font-size: 0.88rem;
+  color: var(--ink-secondary);
+}
+
+/* ==========================================================================
+   INTERACTIVE FEEDBACK & COMMUNITY RATING
+   ========================================================================== */
+.community-section {
+  margin-top: 36px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 30px;
+  box-shadow: var(--shadow-sm);
+}
+
+.rating-header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.star-rating-box {
+  display: flex;
+  gap: 4px;
+}
+
+.star-btn {
+  color: var(--border-strong);
+  padding: 4px;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.star-btn:hover {
+  transform: scale(1.2);
+}
+
+.star-btn.active {
+  color: var(--gold-primary);
+}
+
+.star-btn svg {
+  width: 28px;
+  height: 28px;
+}
+
+.feedback-form {
+  display: grid;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.input-field, .textarea-field {
+  width: 100%;
+  font: inherit;
+  color: var(--ink-primary);
+  background: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 11px 16px;
+  transition: border-color var(--transition-fast);
+}
+
+.input-field:focus, .textarea-field:focus {
+  border-color: var(--water-primary);
+  outline: none;
+}
+
+.textarea-field {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.feedback-submit-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.status-toast {
+  font-size: 0.92rem;
+  color: var(--water-primary);
+  font-weight: 500;
+}
+
+.comments-feed {
+  margin-top: 24px;
+  display: grid;
+  gap: 12px;
+}
+
+.comment-bubble {
+  background: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-size: 0.92rem;
+}
+
+.comment-bubble-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.comment-author {
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.comment-stars {
+  color: var(--gold-primary);
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   MODALS (QR CODE & SHARE)
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 16, 20, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 200;
+  display: none;
+  place-items: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+
+.modal-backdrop.open {
+  display: grid;
+  opacity: 1;
+}
+
+.modal-dialog {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  width: min(100%, 460px);
+  padding: 32px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  text-align: center;
+  animation: modalScale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalScale {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 18px;
+  inset-inline-end: 18px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  display: grid;
+  place-items: center;
+  color: var(--ink-secondary);
+}
+
+.modal-close-btn:hover {
+  color: var(--ink-primary);
+  border-color: var(--water-primary);
+}
+
+.modal-dialog h3 {
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+
+.modal-dialog p {
+  color: var(--ink-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+#qrcode-container {
+  display: flex;
+  justify-content: center;
+  margin-block: 16px;
+  padding: 16px;
+  background: #FFFFFF;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  width: fit-content;
+  margin-inline: auto;
+}
+
+#qrcode-container img {
+  display: block;
+}
+
+.share-channel-list {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.share-channel-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  display: grid;
+  place-items: center;
+  color: var(--ink-secondary);
+  transition: all var(--transition-fast);
+}
+
+.share-channel-btn:hover {
+  background: var(--water-primary);
+  border-color: var(--water-primary);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.share-channel-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  padding-block: 30px 40px;
+  color: var(--ink-secondary);
+  font-size: 0.92rem;
+  transition: background-color var(--transition-smooth);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.footer-attribution {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-crest {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--water-soft);
+  color: var(--water-primary);
+  display: grid;
+  place-items: center;
+}
+
+.footer-crest svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Developer credit strip */
+.footer-dev-credit {
+  width: 100%;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 20px;
+  padding-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: var(--ink-tertiary);
+}
+
+.footer-dev-credit a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--water-primary);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.footer-dev-credit a:hover { opacity: 0.75; }
+
+.footer-dev-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 4px;
+}
+
+.footer-dev-social a {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-secondary);
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.footer-dev-social a:hover {
+  border-color: var(--water-primary);
+  color: var(--water-primary);
+  transform: translateY(-2px);
+}
+
+.footer-dev-social svg { width: 13px; height: 13px; fill: currentColor; }
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 900px) {
+  .interactive-view {
+    grid-template-columns: 1fr;
+  }
+  .stage-wrapper {
+    min-height: 380px;
+    border-inline-end: none;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .section-grid {
+    grid-template-columns: 1fr;
+  }
+  .panel-wrapper {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-bar {
+    flex-wrap: wrap;
+  }
+  .brand-wrapper {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+  .nav-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .lang-selector {
+    max-width: 100%;
+    border-radius: var(--radius-md);
+  }
+  .lang-selector button {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+  .hero-header-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .view-mode-tabs {
+    width: 100%;
+  }
+  .tab-btn {
+    flex: 1;
+    justify-content: center;
+  }
+  .control-bar {
+    justify-content: stretch;
+  }
+  .control-bar .btn-action {
+    flex: 1;
+    justify-content: center;
+  }
+  .control-bar .btn-action.main {
+    flex-basis: 100%;
+  }
+  .hadith-quote-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .z.on {
+    animation: none;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body data-lang="ar">
+
+<!-- HEADER & NAVIGATION -->
+<header>
+  <div class="wrap nav-bar">
+    <div class="brand-wrapper">
+      <div class="brand-crest" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+        </svg>
+      </div>
+      <div class="brand-info">
+        <b id="brandName">دليل الوضوء</b>
+        <small id="brandTag">المحتوى الإرشادي المعتمد للمصلين والزائرين</small>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <!-- Language Switcher -->
+      <div class="lang-selector" id="langSelector" role="group" aria-label="Language selection">
+        <button data-l="ar" aria-pressed="true">العربية</button>
+        <button data-l="en" aria-pressed="false">English</button>
+        <button data-l="fr" aria-pressed="false">Français</button>
+        <button data-l="ur" aria-pressed="false">اردو</button>
+        <button data-l="kn" aria-pressed="false">ಕನ್ನಡ</button>
+        <button data-l="ta" aria-pressed="false">தமிழ்</button>
+        <button data-l="te" aria-pressed="false">తెలుగు</button>
+        <button data-l="mr" aria-pressed="false">मराठी</button>
+      </div>
+
+      <!-- Quick Share Button -->
+      <button class="icon-btn" id="openShareModal" aria-label="Share QR code">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+      </button>
+
+      <!-- Theme Switcher -->
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- OFFICIAL ENDORSEMENT ACCREDITATION -->
+  <div class="official-endorsement">
+    <div class="endorsement-content">
+      <div class="endorsement-badge">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+        </svg>
+        <span id="endorsementBadgeText">معتمد رسميًا</span>
+      </div>
+      <div class="endorsement-text" id="endorsementSource">
+        إعداد: <strong>اللجنة العلمية برئاسة الشؤون الدينية بالمسجد الحرام والمسجد النبوي</strong>
+      </div>
+    </div>
+    <a href="https://risala.prh.gov.sa" target="_blank" rel="noopener noreferrer" class="endorsement-link">
+      <span id="endorsementLinkText">رسالة الحرمين</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+        <polyline points="15 3 21 3 21 9"></polyline>
+        <line x1="10" y1="14" x2="21" y2="3"></line>
+      </svg>
+    </a>
+  </div>
+
+  <!-- HERO TITLE & VIEW MODE SELECTOR -->
+  <section class="hero-intro">
+    <div class="hero-header-row">
+      <div class="hero-title-box">
+        <h1 id="pageTitle">صفة الوضوء خطوة بخطوة</h1>
+        <p id="pageDesc">تطبيق عملي تفاعلي يوضح كيفية الوضوء بدقة ويسر، والوضوء شرط أساسي لصحة الصلاة وطهارة المسلم.</p>
+      </div>
+      
+      <!-- Interactive / Video View Switcher -->
+      <div class="view-mode-tabs" role="tablist" aria-label="View mode">
+        <button class="tab-btn active" id="tabInteractive" role="tab" aria-selected="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+          <span id="tabInteractiveLabel">المرشد التفاعلي</span>
+        </button>
+        <button class="tab-btn" id="tabVideo" role="tab" aria-selected="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+          <span id="tabVideoLabel">فيديو الشرح الرسمي</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN DUAL PLAYER CONTAINER -->
+  <div class="player-container">
+    <!-- MODE 1: INTERACTIVE STEP WALKTHROUGH -->
+    <div class="interactive-view" id="interactiveView">
+      <!-- Stage with Anatomical Mannequin -->
+      <div class="stage-wrapper">
+        <div class="stage-ambient"></div>
+        <div class="stage-svg-box">
+          <svg id="fig" viewBox="0 0 200 360" role="img" aria-label="Wudu body parts illustration">
+            <!-- Background Body Contours -->
+            <circle class="fig-base" cx="100" cy="52" r="30"/>
+            <rect class="fig-base" x="90" y="80" width="20" height="16" rx="6"/>
+            <rect class="fig-base" x="62" y="94" width="76" height="120" rx="26"/>
+            <path class="fig-limb" d="M66 110 L38 200"/>
+            <path class="fig-limb" d="M134 110 L162 200"/>
+            <path class="fig-limb" d="M86 214 L84 322"/>
+            <path class="fig-limb" d="M114 214 L116 322"/>
+
+            <!-- Interactive Highlight Washing Zones -->
+            <circle class="z" data-z="face" cx="100" cy="52" r="30"/>
+            <ellipse class="z" data-z="ears" cx="69" cy="54" rx="5" ry="10"/>
+            <ellipse class="z" data-z="ears" cx="131" cy="54" rx="5" ry="10"/>
+            <path class="z zs thin" data-z="head" d="M72 38 Q100 6 128 38"/>
+            <ellipse class="z" data-z="nose" cx="100" cy="60" rx="5" ry="6"/>
+            <ellipse class="z" data-z="mouth" cx="100" cy="73" rx="10" ry="4.5"/>
+            <path class="z zs" data-z="arms" d="M66 110 L38 200"/>
+            <path class="z zs" data-z="arms" d="M134 110 L162 200"/>
+            <circle class="z" data-z="hands" cx="36" cy="210" r="12"/>
+            <circle class="z" data-z="hands" cx="164" cy="210" r="12"/>
+            <ellipse class="z" data-z="feet" cx="82" cy="336" rx="17" ry="9"/>
+            <ellipse class="z" data-z="feet" cx="118" cy="336" rx="17" ry="9"/>
+          </svg>
+        </div>
+
+        <div class="stage-water-ripples">
+          <span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+            </svg>
+            <span id="activeLimbName"></span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Instruction & Practice Panel -->
+      <div class="panel-wrapper">
+        <div>
+          <div class="step-meta-row">
+            <div class="step-badge" id="stepCounterBadge">الخطوة 1 من 9</div>
+            
+            <!-- Wash Repetition Tracker (Tap to Practice) -->
+            <div class="wash-counter-box" id="washCounterContainer">
+              <small id="washRepLabel">التكرار:</small>
+              <div id="washDroplets" style="display: flex; gap: 4px;"></div>
+            </div>
+          </div>
+
+          <div class="panel-header">
+            <h2 id="stepHeading">النية والبسملة</h2>
+            <p class="step-instruction" id="stepInstruction">انوِ الوضوء بقلبك، ثم قل: بسم الله.</p>
+          </div>
+
+          <!-- Supplication / Dua Display -->
+          <div class="dua-box" id="duaBox" hidden>
+            <div class="dua-arabic" id="duaArabic"></div>
+            <div class="dua-translit" id="duaTranslit"></div>
+            <button class="dua-audio-action" id="playDuaAudio">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              </svg>
+              <span id="audioButtonText">استمع للنطق الصحيح</span>
+            </button>
+          </div>
+
+          <!-- Timer Bar for Auto-Play Mode -->
+          <div class="progress-track" aria-hidden="true">
+            <i id="playProgressBar"></i>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="control-bar">
+          <button class="btn-action" id="btnPrev">
+            <svg class="flip-rtl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+            <span id="btnPrevText">السابق</span>
+          </button>
+
+          <button class="btn-action main" id="btnPlayPause">
+            <svg id="playPauseIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+            <span id="btnPlayPauseText">تشغيل تلقائي</span>
+          </button>
+
+          <button class="btn-action" id="btnNext">
+            <span id="btnNextText">التالي</span>
+            <svg class="flip-rtl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step Chips Carousel -->
+      <nav class="steps-carousel" id="stepsCarousel" aria-label="Wudu steps navigation"></nav>
+    </div>
+
+    <!-- MODE 2: OFFICIAL HARAMAIN VIDEO PLAYER -->
+    <div class="video-view" id="videoView">
+      <div class="video-view-header">
+        <div class="video-tag">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+          </svg>
+          <span id="videoTitleTag">الفيديو الرسمي المعتمد من رئاسة الشؤون الدينية</span>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn-action" id="btnReturnToInteractive">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span id="btnReturnText">العودة للمرشد التفاعلي</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="video-player-frame">
+        <video id="officialVideoPlayer" controls playsinline preload="metadata">
+          <source id="videoSourceEl" src="https://risala.prh.gov.sa/storage/contents/514/ar_sifat_alwoudo_new.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="video-meta-bar">
+        <div class="video-source-info">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="10 8 16 12 10 16 10 8"></polygon>
+          </svg>
+          <span id="videoDescSource">مقطع فيديو عالي الدقة يشرح خطوات الوضوء الصحيحة عمليًا</span>
+        </div>
+        <div>
+          <span id="videoLangIndicator" style="font-weight: 700; color: var(--gold-primary);">العربية</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROPHETIC HADITH & WATER CONSERVATION WISDOM -->
+  <div class="hadith-quote-card">
+    <div class="hadith-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+      </svg>
+    </div>
+    <div class="hadith-content">
+      <b id="hadithText">«لا تُسْرِفْ في المَاءِ وإنْ كُنْتَ عَلَى نَهْرٍ جَارٍ»</b>
+      <span id="hadithSource">توجيه نبوي شريف في الحفاظ على الماء وعدم الإسراف فيه أثناء الطهارة والعبادة.</span>
+    </div>
+  </div>
+
+  <!-- JURISPRUDENCE & SUNAN CARDS -->
+  <section class="section-grid">
+    <!-- Nullifiers of Wudu -->
+    <div class="info-card">
+      <div class="card-title-row">
+        <div class="card-title-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+        <h3 id="nullTitle">مبطلات ونواقض الوضوء</h3>
+      </div>
+      <ul id="nullList"></ul>
+      <p class="note-text" id="nullNote">تختلف المذاهب الفقهية في بعض المسائل الدقيقة؛ يرجى الرجوع لأهل العلم المعتمدين عند الحاجة.</p>
+    </div>
+
+    <!-- Recommended Sunan & Etiquette -->
+    <div class="info-card">
+      <div class="card-title-row">
+        <div class="card-title-icon gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+        </div>
+        <h3 id="sunanTitle">من سنن وآداب الوضوء</h3>
+      </div>
+      <ul id="sunanList"></ul>
+      <p class="note-text" id="sunanNote">الحرص على السنن يضاعف الأجر ويقتدي بسيد المرسلين صلى الله عليه وسلم.</p>
+    </div>
+  </section>
+
+  <!-- COMMUNITY RATING & FEEDBACK -->
+  <section class="community-section">
+    <div class="rating-header-row">
+      <div>
+        <h3 id="rateTitle" style="font-size: 1.3rem; margin-bottom: 4px;">تقييم وملاحظات الزائرين</h3>
+        <p id="rateSubtitle" style="color: var(--ink-secondary); font-size: 0.95rem;">شاركنا رأيك في وضوح الدليل التعليمي لتطويره باستمرار.</p>
+      </div>
+      <div class="star-rating-box" id="starContainer"></div>
+    </div>
+
+    <form class="feedback-form" id="feedbackForm" onsubmit="return false;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+        <input class="input-field" id="feedbackName" type="text" placeholder="الاسم (اختياري)" autocomplete="name">
+        <input class="input-field" id="feedbackEmail" type="email" placeholder="البريد الإلكتروني (اختياري)" autocomplete="email">
+      </div>
+      <textarea class="textarea-field" id="feedbackComment" placeholder="اكتب ملاحظاتك أو استفسارك هنا..."></textarea>
+      
+      <div class="feedback-submit-row">
+        <button class="btn-action main" id="submitFeedbackBtn">
+          <span id="submitFeedbackText">إرسال التقييم</span>
+        </button>
+        <span class="status-toast" id="feedbackStatus" role="status"></span>
+      </div>
+    </form>
+
+    <!-- Display Recent Community Reviews -->
+    <div class="comments-feed" id="commentsFeed"></div>
+  </section>
+</main>
+
+<!-- SHARE & QR CODE MODAL -->
+<div class="modal-backdrop" id="shareModal" role="dialog" aria-modal="true" aria-labelledby="modalShareTitle">
+  <div class="modal-dialog">
+    <button class="modal-close-btn" id="closeShareModal" aria-label="Close modal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="6"></line>
+      </svg>
+    </button>
+    
+    <h3 id="modalShareTitle">مشاركة الدليل التعليمي</h3>
+    <p id="modalShareDesc">امسح رمز الاستجابة السريعة (QR) بكاميرا هاتفك لفتح الدليل ونشره لمن تحب.</p>
+    
+    <div id="qrcode-container"></div>
+
+    <div style="margin-top: 18px;">
+      <button class="btn-action main" id="btnCopyUrl" style="width: 100%; justify-content: center;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        <span id="copyLinkText">نسخ الرابط المباشر</span>
+      </button>
+      <div id="copyFeedbackToast" class="status-toast" style="margin-top: 8px;"></div>
+    </div>
+
+    <!-- Social Share Buttons -->
+    <div class="share-channel-list">
+      <a class="share-channel-btn" id="shareWhatsApp" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+      </a>
+      <a class="share-channel-btn" id="shareTelegram" target="_blank" rel="noopener noreferrer" aria-label="Share on Telegram">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+        </svg>
+      </a>
+      <a class="share-channel-btn" id="shareTwitter" target="_blank" rel="noopener noreferrer" aria-label="Share on X (Twitter)">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-attribution">
+      <div class="footer-crest">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+        </svg>
+      </div>
+      <div>
+        <b id="footerBrand">دليل الوضوء المرئي</b>
+        <div id="footerText" style="font-size: 0.85rem; color: var(--ink-tertiary);">محتوى تعليمي إرشادي عام معتمد لصحة العبادة. للتفاصيل الفقهية المتخصصة يرجى مراجعة أهل العلم.</div>
+      </div>
+    </div>
+    <div>
+      <span id="footerCopyright">© 2026 دليل الوضوء · وقف تعليمي لوجه الله تعالى</span>
+    </div>
+
+    <!-- Developer Portfolio Credit -->
+    <div class="footer-dev-credit">
+      <span>✦ Crafted by</span>
+      <a href="portfolio.html" target="_blank" rel="noopener noreferrer" title="View Developer Portfolio">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        Mohammed Rehan A
+      </a>
+      <div class="footer-dev-social">
+        <a href="https://github.com/mohammed-rehan-a" target="_blank" rel="noopener noreferrer" title="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.37-1.33-1.74-1.33-1.74-1.08-.74.08-.73.08-.73 1.2.09 1.83 1.23 1.83 1.23 1.06 1.82 2.78 1.29 3.46.99.11-.77.41-1.29.75-1.59-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.01 2.04.14 3 .4 2.28-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58C20.56 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/mohammed-rehan-a-558604362" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .78 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .78 23.2 0 22.22 0z"/></svg>
+        </a>
+        <a href="mailto:mohammedrehan0026@gmail.com" title="Email">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPT & DATA ENGINE -->
+<script>
+/* ==========================================================================
+   APPLICATION CONFIGURATION & MULTILINGUAL CONTENT
+   ========================================================================== */
+const STEP_SECONDS = 7; // Time allocated per step in automatic play mode
+
+// Official Haramain Video Sources per Language from risala.prh.gov.sa
+const VIDEO_SOURCES = {
+  ar: "https://risala.prh.gov.sa/storage/contents/514/ar_sifat_alwoudo_new.mp4",
+  en: "https://risala.prh.gov.sa/storage/contents/673/en_Ablution_new.mp4",
+  fr: "https://risala.prh.gov.sa/storage/contents/783/fr_woudu_description.mp4",
+  ur: "https://risala.prh.gov.sa/storage/contents/828/ur_Ablution_new.mp4",
+  kn: "https://risala.prh.gov.sa/storage/contents/970/kn_Description_of_Woudu.mp4",
+  ta: "https://risala.prh.gov.sa/storage/contents/956/ta_Description_of_Woudu.mp4",
+  te: "https://risala.prh.gov.sa/storage/contents/836/te_woudu_description.mp4",
+  mr: "https://risala.prh.gov.sa/storage/contents/790/hi_woudu_description_new.mp4"
+};
+
+// Common Supplication Texts
+const DUA_START_AR = "بِسْمِ اللَّهِ";
+const DUA_END_AR = "أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ. اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ";
+
+// 9 Canonical Wudu Steps definition
+const STEPS = [
+  { z: [],                reps: 1, dua: DUA_START_AR, translitKey: 'duaStartTranslit', limbKey: 'intention' },
+  { z: ['hands'],         reps: 3, limbKey: 'hands' },
+  { z: ['mouth'],         reps: 3, limbKey: 'mouth' },
+  { z: ['nose'],          reps: 3, limbKey: 'nose' },
+  { z: ['face'],          reps: 3, limbKey: 'face' },
+  { z: ['arms', 'hands'], reps: 3, limbKey: 'arms' },
+  { z: ['head', 'ears'],  reps: 1, limbKey: 'headEars' },
+  { z: ['feet'],          reps: 3, limbKey: 'feet' },
+  { z: [],                reps: 1, dua: DUA_END_AR, translitKey: 'duaEndTranslit', limbKey: 'duaComplete' }
+];
+
+// Complete Multilingual Dictionaries (Arabic, English, French, Urdu)
+const I18N = {
+  ar: {
+    dir: 'rtl',
+    brand: 'دليل الوضوء',
+    tag: 'المحتوى الإرشادي المعتمد للمصلين والزائرين',
+    endorsementBadge: 'معتمد رسميًا',
+    endorsementSource: 'إعداد: <strong>اللجنة العلمية برئاسة الشؤون الدينية بالمسجد الحرام والمسجد النبوي</strong>',
+    endorsementLink: 'رسالة الحرمين',
+    title: 'صفة الوضوء خطوة بخطوة',
+    desc: 'تطبيق عملي تفاعلي يوضح كيفية الوضوء بدقة ويسر، والوضوء شرط أساسي لصحة الصلاة وطهارة المسلم.',
+    tabInteractive: 'المرشد التفاعلي',
+    tabVideo: 'فيديو الشرح الرسمي',
+    videoTag: 'الفيديو الرسمي المعتمد من رئاسة الشؤون الدينية',
+    videoDesc: 'مقطع فيديو عالي الدقة يشرح خطوات الوضوء الصحيحة عمليًا من الحرمين الشريفين',
+    videoLang: 'اللغة: العربية',
+    returnBtn: 'العودة للمرشد التفاعلي',
+    stepCount: (i, n) => `الخطوة ${i} من ${n}`,
+    repLabel: 'الغسلات:',
+    repText: { 1: 'مرة واحدة', 3: 'ثلاث مرات' },
+    audioListen: 'استمع للنطق الصحيح',
+    prev: 'السابق',
+    next: 'التالي',
+    play: 'تشغيل تلقائي',
+    pause: 'إيقاف مؤقت',
+    hadith: '«لا تُسْرِفْ في المَاءِ وإنْ كُنْتَ عَلَى نَهْرٍ جَارٍ»',
+    hadithSource: 'توجيه نبوي شريف في الحفاظ على الماء وعدم الإسراف فيه أثناء الطهارة والعبادة.',
+    nullTitle: 'مبطلات ونواقض الوضوء',
+    nullList: [
+      'الخارج من السبيلين (البول، الغائط، الريح، وغيرها).',
+      'النوم المستغرق الذي يزول معه الإدراك والشعور.',
+      'زوال العقل بالإغماء أو السُّكر أو التخدير أو الجنون.',
+      'مس الفرج باليد مباشرة من غير حائل بشهوة.',
+      'أكل لحم الإبل (الجزور) على القول الراجح.'
+    ],
+    nullNote: 'تختلف المذاهب الفقهية في بعض المسائل الدقيقة؛ يرجى الرجوع لأهل العلم المعتمدين عند الحاجة.',
+    sunanTitle: 'من سنن وآداب الوضوء',
+    sunanList: [
+      'استعمال السواك عند البدء أو عند المضمضة.',
+      'غسل الكفين ثلاثاً قبل الشروع في الوضوء.',
+      'المبالغة في المضمضة والاستنشاق لغير الصائم.',
+      'تخليل اللحية الكثيفة وأصابع اليدين والرجلين بالماء.',
+      'تقديم الميامن على المياسر (البدء باليمين ثم الشمال).',
+      'الدعاء بالشهادتين بعد الانتهاء من الوضوء.'
+    ],
+    sunanNote: 'الحرص على السنن يضاعف الأجر اقتداءً بسيد المرسلين صلى الله عليه وسلم.',
+    rateTitle: 'تقييم وملاحظات الزائرين',
+    rateSubtitle: 'شاركنا رأيك في وضوح الدليل التعليمي لتطويره باستمرار.',
+    namePlaceholder: 'الاسم (اختياري)',
+    emailPlaceholder: 'البريد الإلكتروني (اختياري)',
+    commentPlaceholder: 'اكتب ملاحظاتك أو استفسارك هنا...',
+    submitBtn: 'إرسال التقييم',
+    sentMsg: 'جزاك الله خيراً، تم حفظ تقييمك بنجاح!',
+    needRateMsg: 'يرجى اختيار عدد النجوم أولاً قبل الإرسال.',
+    shareTitle: 'مشاركة الدليل التعليمي',
+    shareDesc: 'امسح رمز الاستجابة السريعة (QR) بكاميرا هاتفك لفتح الدليل ونشره لمن تحب.',
+    copyBtn: 'نسخ الرابط المباشر',
+    copiedMsg: 'تم نسخ الرابط إلى الحافظة بنجاح!',
+    copyFailMsg: 'تعذر النسخ التلقائي؛ يمكنك نسخه يدويًا من شريط المتصفح.',
+    footBrand: 'دليل الوضوء المرئي',
+    footText: 'محتوى تعليمي إرشادي عام معتمد لصحة العبادة. للتفاصيل الفقهية المتخصصة يرجى مراجعة أهل العلم.',
+    footCopy: '© 2026 دليل الوضوء · وقف تعليمي لوجه الله تعالى',
+    limbs: {
+      intention: 'القلب واللسان (النية والبسملة)',
+      hands: 'غسل الكفين إلى الرسغين',
+      mouth: 'المضمضة (إدارة الماء بالفم)',
+      nose: 'الاستنشاق والاستنثار',
+      face: 'غسل كامل الوجه',
+      arms: 'غسل اليدين والذراعين للمرفقين',
+      headEars: 'مسح كامل الرأس مع الأذنين',
+      feet: 'غسل القدمين للكعبين مع التخليل',
+      duaComplete: 'الذكر المستحب بعد الفراغ'
+    },
+    duaStartTranslit: 'Bismillāh',
+    duaEndTranslit: 'Ash-hadu an lā ilāha illallāhu waḥdahu lā sharīka lahu, wa ash-hadu anna Muḥammadan ‘abduhu wa rasūluh. Allāhummaj‘alnī minat-tawwābīna waj‘alnī minal-mutaṭahhirīn.',
+    steps: [
+      ['النية والبسملة', 'انوِ الوضوء في قلبك طاعةً لله تعالى وقربةً إليه، ثم سمِّ الله قائلاً: «بِسْمِ اللَّهِ».'],
+      ['غسل الكفين', 'اغسل كفيك ثلاث مرات تأكيداً على نظافتهما، وخلّل بين أصابعك.'],
+      ['المضمضة', 'خذ غرفة من ماء بيمينك واجعلها في فمك وحرك الماء داخله لتنظيفه ثم مجه، ثلاث مرات.'],
+      ['الاستنشاق والاستنثار', 'اجذب الماء بأنفك بيدك اليمنى، ثم استنثر (أخرجه) بيدك اليسرى بلطف، ثلاث مرات.'],
+      ['غسل الوجه', 'اغسل وجهك كاملاً من منابت شعر الرأس المعتاد إلى أسفل الذقن، ومن الأذن إلى الأذن، ثلاث مرات.'],
+      ['غسل اليدين إلى المرفقين', 'اغسل يدك اليمنى من أطراف الأصابع إلى المرفق مع إدخال المرفق في الغسل، ثلاث مرات، ثم افعل مثل ذلك باليسرى.'],
+      ['مسح الرأس والأذنين', 'بلل يديك بالماء وامسح رأسك بهما من مقدمته إلى قفاه ثم ارجع بهما، ثم امسح باطن أذنيك بسبابتيك وظاهرهما بإبهاميك، مرة واحدة.'],
+      ['غسل الرجلين إلى الكعبين', 'اغسل رجلك اليمنى مع الكعبين ثلاث مرات وخلّل بين أصابعك، ثم اغسل اليسرى كذلك ثلاث مرات.'],
+      ['الذكر بعد الفراغ من الوضوء', 'قل بعد الانتهاء من وضوئك: «أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللَّهُ...» لتفتح لك أبواب الجنة الثمانية.']
+    ]
+  },
+  en: {
+    dir: 'ltr',
+    brand: 'Wudu Guide',
+    tag: 'Official visual guide for worshippers and visitors',
+    endorsementBadge: 'Officially Endorsed',
+    endorsementSource: 'Prepared by: <strong>The Scientific Committee of the Presidency of Religious Affairs at the Two Holy Mosques</strong>',
+    endorsementLink: 'Risala Al-Haramain',
+    title: 'Step-by-Step Guide to Wudu (Ablution)',
+    desc: 'An interactive practical guide detailing how to perform ablution correctly according to the authentic prophetic practice.',
+    tabInteractive: 'Interactive Guide',
+    tabVideo: 'Official Video Guide',
+    videoTag: 'Official Demonstration Video from the Grand Mosque',
+    videoDesc: 'High-definition practical demonstration of the prophetic wudu filmed at the Two Holy Mosques',
+    videoLang: 'Language: English',
+    returnBtn: 'Return to Interactive Guide',
+    stepCount: (i, n) => `Step ${i} of ${n}`,
+    repLabel: 'Washes:',
+    repText: { 1: 'Once', 3: 'Three times' },
+    audioListen: 'Listen to Pronunciation',
+    prev: 'Previous',
+    next: 'Next',
+    play: 'Auto Play',
+    pause: 'Pause',
+    hadith: '“Do not waste water, even if you are at a flowing stream.”',
+    hadithSource: 'Prophetic tradition emphasizing conservation of water and mindful environmental stewardship in worship.',
+    nullTitle: 'What Nullifies Wudu (Ablution)',
+    nullList: [
+      'Anything exiting from the two private parts (urine, stool, wind, etc.).',
+      'Deep sleep during which awareness and consciousness are lost.',
+      'Loss of consciousness due to fainting, intoxication, medication, or insanity.',
+      'Touching the private parts directly without a barrier with desire.',
+      'Consuming camel meat (according to the stronger view in the Hanbali school).'
+    ],
+    nullNote: 'Jurists have nuanced viewpoints on specific scenarios; consult knowledgeable scholars when necessary.',
+    sunanTitle: 'Recommended Sunan & Etiquettes',
+    sunanList: [
+      'Using the Miswak (tooth stick) before ablution or during mouth rinsing.',
+      'Washing both hands three times before starting the full wash.',
+      'Rinsing mouth and sniffing water thoroughly (unless fasting).',
+      'Running fingers through a dense beard and between fingers and toes (Takhlil).',
+      'Starting with the right side before the left (Tayammun).',
+      'Reciting the Shahadah supplication upon completion.'
+    ],
+    sunanNote: 'Observing the Sunan multiplies reward and aligns one closely with the noble Prophet (pbuh).',
+    rateTitle: 'Visitor Feedback & Ratings',
+    rateSubtitle: 'Share your feedback to help us continually enhance this learning resource.',
+    namePlaceholder: 'Your Name (optional)',
+    emailPlaceholder: 'Email Address (optional)',
+    commentPlaceholder: 'Write your comments, questions, or notes here...',
+    submitBtn: 'Submit Feedback',
+    sentMsg: 'Thank you! Your feedback has been recorded successfully.',
+    needRateMsg: 'Please select a star rating first before submitting.',
+    shareTitle: 'Share Wudu Guide',
+    shareDesc: 'Scan this QR code with your mobile camera to view and share this guide with fellow worshippers.',
+    copyBtn: 'Copy Direct Link',
+    copiedMsg: 'Link copied to clipboard successfully!',
+    copyFailMsg: 'Could not copy automatically; please copy the URL from your browser bar.',
+    footBrand: 'Visual Wudu Guide',
+    footText: 'General educational guidance for valid purification. For specific juridical questions, please consult qualified scholars.',
+    footCopy: '© 2026 Wudu Guide · Educational Waqf for the Sake of Allah',
+    limbs: {
+      intention: 'Heart & Tongue (Niyyah & Bismillah)',
+      hands: 'Washing hands to the wrists',
+      mouth: 'Rinsing the mouth (Madmadah)',
+      nose: 'Sniffing & expelling water (Istinshaq)',
+      face: 'Washing the entire face',
+      arms: 'Washing forearms to elbows',
+      headEars: 'Wiping whole head & ears',
+      feet: 'Washing feet up to the ankles',
+      duaComplete: 'Recommended closing supplication'
+    },
+    duaStartTranslit: 'Bismillāh (In the name of Allah)',
+    duaEndTranslit: 'I testify that there is no god but Allah alone with no partner, and I testify that Muhammad is His servant and messenger. O Allah, make me of those who constantly repent and make me of those who purify themselves.',
+    steps: [
+      ['Intention & Bismillah', 'Make the intention in your heart to perform wudu for the sake of Allah, then say: “Bismillah” (In the name of Allah).'],
+      ['Washing the Hands', 'Wash both hands up to the wrists three times, making sure water runs between your fingers.'],
+      ['Rinsing the Mouth', 'Take a handful of water with your right hand, rinse inside your mouth thoroughly and spit it out, three times.'],
+      ['Sniffing & Expelling Water', 'Inhale water gently into your nostrils with your right hand, then blow it out using your left hand, three times.'],
+      ['Washing the Face', 'Wash your entire face from the hairline down to the bottom of the chin and from ear to ear, three times.'],
+      ['Washing Arms to the Elbows', 'Wash your right arm from fingertips up to and including the elbow, three times, then repeat with the left arm.'],
+      ['Wiping Head and Ears', 'Moisten your hands and wipe your head from front to the nape and back, then wipe inside and behind your ears, once.'],
+      ['Washing the Feet', 'Wash your right foot thoroughly up to and including the ankles three times, rubbing between toes, then the left foot.'],
+      ['Supplication After Wudu', 'When finished, recite the Shahadah supplication; all eight gates of Paradise are opened for whoever recites it.']
+    ]
+  },
+  fr: {
+    dir: 'ltr',
+    brand: 'Guide des ablutions',
+    tag: 'Guide visuel officiel pour les fidèles et les pèlerins',
+    endorsementBadge: 'Officiellement approuvé',
+    endorsementSource: 'Préparé par : <strong>Le Comité Scientifique de la Présidence des Affaires Religieuses des Deux Saintes Mosquées</strong>',
+    endorsementLink: 'Risala Al-Haramain',
+    title: 'Comment faire les ablutions (Woudou)',
+    desc: 'Un guide pratique interactif détaillant chaque étape des ablutions rituelles selon la tradition prophétique authentique.',
+    tabInteractive: 'Guide interactif',
+    tabVideo: 'Vidéo explicative officielle',
+    videoTag: 'Démonstration vidéo officielle des Deux Saintes Mosquées',
+    videoDesc: 'Vidéo haute définition montrant l’application pratique des ablutions rituelles',
+    videoLang: 'Langue : Français',
+    returnBtn: 'Retour au guide interactif',
+    stepCount: (i, n) => `Étape ${i} sur ${n}`,
+    repLabel: 'Répétitions :',
+    repText: { 1: 'Une fois', 3: 'Trois fois' },
+    audioListen: 'Écouter la prononciation',
+    prev: 'Précédent',
+    next: 'Suivant',
+    play: 'Lecture auto',
+    pause: 'Pause',
+    hadith: '« Ne gaspille pas l’eau, même si tu te trouves au bord d’un ruisseau coulant. »',
+    hadithSource: 'Enseignement prophétique sur la préservation de l’eau et l’éthique de la purification.',
+    nullTitle: 'Ce qui annule les ablutions',
+    nullList: [
+      'Tout ce qui est évacué par les voies naturelles (urine, matières fécales, gaz, etc.).',
+      'Le sommeil profond qui fait perdre conscience.',
+      'La perte de lucidité causée par un évanouissement ou une anesthésie.',
+      'Le fait de toucher directement les parties intimes avec désir.',
+      'La consommation de viande de chameau (selon l’avis prépondérant).'
+    ],
+    nullNote: 'Les juristes ont des avis détaillés selon les écoles ; consultez les savants reconnus au besoin.',
+    sunanTitle: 'Les actes recommandés (Sounan)',
+    sunanList: [
+      'L’usage du Siwak avant de commencer ou lors du rinçage.',
+      'Laver les mains trois fois avant d’entamer les membres.',
+      'Bien rincer la bouche et le nez (hors période de jeûne).',
+      'Passer les doigts mouillés à travers la barbe dense et entre les orteils.',
+      'Commencer par le côté droit avant le côté gauche.',
+      'Réciter l’attestation de foi (Chahada) une fois terminé.'
+    ],
+    sunanNote: 'Observer les Sounan décuple les récompenses et suit l’exemple du Messager (sbsl).',
+    rateTitle: 'Avis et retours des utilisateurs',
+    rateSubtitle: 'Faites-nous part de vos suggestions pour perfectionner cet outil éducatif.',
+    namePlaceholder: 'Votre nom (optionnel)',
+    emailPlaceholder: 'Adresse e-mail (optionnelle)',
+    commentPlaceholder: 'Écrivez votre commentaire ici...',
+    submitBtn: 'Envoyer l’avis',
+    sentMsg: 'Merci ! Votre commentaire a été enregistré.',
+    needRateMsg: 'Veuillez sélectionner un nombre d’étoiles d’abord.',
+    shareTitle: 'Partager le guide des ablutions',
+    shareDesc: 'Scannez ce QR code avec votre téléphone pour ouvrir et diffuser ce guide pratique.',
+    copyBtn: 'Copier le lien direct',
+    copiedMsg: 'Lien copié dans le presse-papiers avec succès !',
+    copyFailMsg: 'Copie automatique impossible ; veuillez copier l’URL depuis le navigateur.',
+    footBrand: 'Guide des ablutions',
+    footText: 'Contenu éducatif général sur la purification rituelle. Pour les avis juridiques spécialisés, consultez les savants.',
+    footCopy: '© 2026 Guide des ablutions · Waqf éducatif pour Allah',
+    limbs: {
+      intention: 'Cœur et langue (Intention & Bismillah)',
+      hands: 'Laver les deux mains jusqu’aux poignets',
+      mouth: 'Rinçage de la bouche (Madmadah)',
+      nose: 'Aspiration et rejet de l’eau (Istinchaq)',
+      face: 'Laver tout le visage',
+      arms: 'Laver les avant-bras jusqu’aux coudes',
+      headEars: 'Essuyer la tête et les oreilles',
+      feet: 'Laver les pieds jusqu’aux chevilles',
+      duaComplete: 'Invocation finale recommandée'
+    },
+    duaStartTranslit: 'Bismillāh (Au nom d’Allah)',
+    duaEndTranslit: 'J’atteste qu’il n’y a point de divinité digne d’adoration en dehors d’Allah Seul sans associé, et j’atteste que Mohammed est Son serviteur et Messager. Ô Allah, fais que je sois du nombre des repentants et des purifiés.',
+    steps: [
+      ['Intention et Bismillah', 'Formulez l’intention sincère dans votre cœur pour plaire à Allah, puis dites : « Bismillah ».'],
+      ['Laver les mains', 'Lavez vos deux mains jusqu’aux poignets trois fois en frottant bien entre les doigts.'],
+      ['Se rincer la bouche', 'Prenez de l’eau dans la main droite, faites-la circuler dans la bouche et recrachez-la, trois fois.'],
+      ['Rincer le nez', 'Aspirez délicatement l’eau par le nez avec la main droite, puis mouchez-la avec la main gauche, trois fois.'],
+      ['Laver le visage', 'Lavez tout votre visage de la racine des cheveux jusqu’au menton, et d’une oreille à l’autre, trois fois.'],
+      ['Laver les bras aux coudes', 'Lavez le bras droit des bouts des doigts jusqu’au coude inclus trois fois, puis faites de même pour le bras gauche.'],
+      ['Essuyer tête et oreilles', 'Avec les mains humides, passez sur votre tête d’avant en arrière puis revenez, puis essuyez l’intérieur et l’arrière des oreilles, une fois.'],
+      ['Laver les pieds aux chevilles', 'Lavez le pied droit jusqu’aux chevilles trois fois en passant entre les orteils, puis lavez le pied gauche de même.'],
+      ['Invocation finale', 'Une fois terminé, récitez l’attestation de foi prophétique pour que s’ouvrent les portes du Paradis.']
+    ]
+  },
+  ur: {
+    dir: 'rtl',
+    brand: 'وضو گائیڈ',
+    tag: 'نمازیوں اور زائرین کے لیے باضابطہ تصویری و عملی رہنمائی',
+    endorsementBadge: 'مستند اور منظور شدہ',
+    endorsementSource: 'ترتیب و تدوین: <strong>علمی کمیٹی برائے امورِ دینیہ مسجد حرام و مسجد نبوی</strong>',
+    endorsementLink: 'رسالۃ الحرمین',
+    title: 'وضو کا مسنون طریقہ قدم بہ قدم',
+    desc: 'وضو کا صحیح اور مکمل مسنون طریقہ سیکھنے کے لیے انٹرایکٹو گائیڈ۔ نماز کی درستی کے لیے طہارت اولین شرط ہے۔',
+    tabInteractive: 'عملی رہنمائی',
+    tabVideo: 'سرکاری معلوماتی ویڈیو',
+    videoTag: 'حرمین شریفین کی باضابطہ تعلیمی ویڈیو',
+    videoDesc: 'مسجد حرام و مسجد نبوی کے شعبہ دینی امور کی جانب سے وضو کی عملی اور تصویری ویڈیو',
+    videoLang: 'زبان: اردو',
+    returnBtn: 'انٹرایکٹو گائیڈ پر واپس جائیں',
+    stepCount: (i, n) => `مرحلہ ${i} از ${n}`,
+    repLabel: 'دھونا:',
+    repText: { 1: 'ایک بار', 3: 'تین بار' },
+    audioListen: 'صحیح تلفظ سنیں',
+    prev: 'پچھلا',
+    next: 'اگلا',
+    play: 'خودکار چلائیں',
+    pause: 'روکیں',
+    hadith: '«پانی ضائع مت کرو خواہ تم بہتی ہوئی نہر پر ہی کیوں نہ ہو»',
+    hadithSource: 'فرمانِ نبوی ﷺ جس میں وضو اور طہارت کے دوران پانی کے اسراف سے سختی سے منع فرمایا گیا ہے۔',
+    nullTitle: 'وضو توڑنے والی چیزیں (نواقضِ وضو)',
+    nullList: [
+      'پیشاب، پاخانہ یا ریح کا خارج ہونا۔',
+      'ایسی گہری نیند جس سے ہوش و حواس باقی نہ رہیں۔',
+      'بے ہوشی، غشی، یا جنون سے عقل کا زائل ہونا۔',
+      'بغیر کسی رکاوٹ کے شہوت سے شرمگاہ کو چھونا۔',
+      'اونٹ کا گوشت کھانا (راجح موقف کے مطابق)۔'
+    ],
+    nullNote: 'بعض مسائل میں فقہی آراء کا فرق موجود ہے؛ ضرورت پڑنے پر مستند اہل علم سے رجوع کریں۔',
+    sunanTitle: 'وضو کی اہم مسنون دعائیں اور آداب',
+    sunanList: [
+      'وضو کے آغاز میں مسواک کرنا۔',
+      'آغاز میں دونوں ہاتھوں کو گٹوں تک تین بار دھونا۔',
+      'روزہ نہ ہو تو خوب اچھی طرح کلی کرنا اور ناک صاف کرنا۔',
+      'گھنی داڑھی اور انگلیوں کا خلال کرنا۔',
+      'دائیں اعضاء کو بائیں سے پہلے دھونا (تیامن)۔',
+      'وضو کے بعد مسنون کلمہ شہادت اور دعا پڑھنا۔'
+    ],
+    sunanNote: 'سنت نبوی پر عمل پیرا ہونے سے ثواب میں بے پناہ اضافہ ہوتا ہے۔',
+    rateTitle: 'زائرین کی آراء اور فیڈ بیک',
+    rateSubtitle: 'اس تعلیمی گائیڈ کو مزید بہتر بنانے کے لیے اپنی رائے کا اظہار فرمائیں۔',
+    namePlaceholder: 'آپ کا نام (اختیاری)',
+    emailPlaceholder: 'ای میل (اختیاری)',
+    commentPlaceholder: 'اپنے تاثرات یا سوالات یہاں درج کریں...',
+    submitBtn: 'رائے جمع کروائیں',
+    sentMsg: 'جزاکم اللہ خیراً، آپ کا تبصرہ محفوظ ہو گیا!',
+    needRateMsg: 'براہ کرم تبصرہ بھیجنے سے پہلے ستارے منتخب کریں۔',
+    shareTitle: 'وضو گائیڈ کو شیئر کریں',
+    shareDesc: 'اس QR کوڈ کو اپنے موبائل کیمرے سے اسکین کریں اور دیگر نمازیوں تک یہ نیکی پہنچائیں۔',
+    copyBtn: 'براہ راست لنک کاپی کریں',
+    copiedMsg: 'لنک کلپ بورڈ پر کاپی ہو گیا!',
+    copyFailMsg: 'کاپی نہیں ہو سکا؛ براؤزر کے ایڈریس بار سے لنک کاپی کریں۔',
+    footBrand: 'تصویری وضو گائیڈ',
+    footText: 'طہارت اور نماز کی درستگی کے لیے عمومی رہنمائی۔ تفصیلی فقہی مسائل کے لیے جید علمائے کرام سے رابطہ کریں۔',
+    footCopy: '© 2026 وضو گائیڈ · صدقہ جاریہ لوجہ اللہ',
+    limbs: {
+      intention: 'دل کی نیت اور زبان سے بسم اللہ',
+      hands: 'دونوں ہاتھوں کو کلائیوں تک دھونا',
+      mouth: 'کلی کرنا (منہ میں پانی گھمانا)',
+      nose: 'ناک میں پانی چڑھانا اور جھاڑنا',
+      face: 'پیشانی سے ٹھوڑی تک چہرہ دھونا',
+      arms: 'انگلیوں سے کہنیوں سمیت بازو دھونا',
+      headEars: 'پورے سر اور کانوں کا مسح',
+      feet: 'ٹخنوں سمیت پاؤں دھونا اور خلال',
+      duaComplete: 'وضو کے اختتام کی مسنون دعا'
+    },
+    duaStartTranslit: 'بسم اللہ (اللہ کے نام سے شروع)',
+    duaEndTranslit: 'میں گواہی دیتا ہوں کہ اللہ کے سوا کوئی معبود نہیں، وہ اکیلا ہے اس کا کوئی شریک نہیں، اور میں گواہی دیتا ہوں کہ محمد ﷺ اس کے بندے اور رسول ہیں۔ اے اللہ مجھے توبہ کرنے والوں اور پاکیزہ رہنے والوں میں شامل فرما۔',
+    steps: [
+      ['نیت اور بسم اللہ', 'دل میں وضو کی نیت کریں اور زبان سے «بِسْمِ اللَّهِ» کہیں۔'],
+      ['ہاتھ دھونا', 'دونوں ہاتھوں کو کلائیوں تک تین بار دھوئیں اور انگلیوں کے درمیان خلال کریں۔'],
+      ['کلی کرنا', 'دائیں ہاتھ سے منہ میں پانی ڈال کر اچھی طرح گھمائیں اور نکالیں، تین بار۔'],
+      ['ناک میں پانی ڈالنا', 'دائیں ہاتھ سے ناک میں پانی چڑھائیں اور بائیں ہاتھ کی چھوٹی انگلی سے ناک صاف کریں، تین بار۔'],
+      ['چہرہ دھونا', 'پیشانی کے بالوں کی جڑ سے ٹھوڑی کے نیچے تک اور ایک کان کی لو سے دوسرے کان تک چہرہ دھوئیں، تین بار۔'],
+      ['کہنیوں تک بازو دھونا', 'پہلے دایاں ہاتھ انگلیوں کے پوروں سے کہنی سمیت تین بار دھوئیں، پھر بایاں ہاتھ اسی طرح۔'],
+      ['سر اور کانوں کا مسح', 'ہاتھ گیلے کر کے پیشانی سے گدی تک اور گدی سے واپس پیشانی تک مسح کریں، پھر شہادت کی انگلی سے کانوں کا اندرونی اور انگوٹھے سے بیرونی مسح کریں، ایک بار۔'],
+      ['پاؤں دھونا', 'پہلے دایاں پاؤں ٹخنوں سمیت تین بار دھوئیں اور چھنگلی سے خلال کریں، پھر بایاں پاؤں اسی طرح تین بار دھوئیں.'],
+      ['وضو کے بعد کی دعا', 'وضو سے فارغ ہو کر کلمہ شہادت اور توبہ کی دعا پڑھیں؛ حدیث نبوی کے مطابق جنت کے آٹھوں دروازے کھل جاتے ہیں۔']
+    ]
+  },
+  kn: {
+    dir: 'ltr',
+    brand: 'ವುದೂ ಮಾರ್ಗದರ್ಶಿ',
+    tag: 'ನಮಾಝ್‌ ಮಾಡುವವರು ಮತ್ತು ಭೇಟಿ ನೀಡುವವರಿಗೆ ಅಧಿಕೃತ ದೃಶ್ಯ ಮಾರ್ಗದರ್ಶಿ',
+    endorsementBadge: 'ಅಧಿಕೃತವಾಗಿ ಅನುಮೋದಿತ',
+    endorsementSource: 'ತಯಾರಿಸಿದ್ದು: <strong>ಮಸ್ಜಿದುಲ್ ಹರಾಮ್ ಮತ್ತು ಮಸ್ಜಿದ್ ನಬವಿ ಧಾರ್ಮಿಕ ವ್ಯವಹಾರಗಳ ಅಧ್ಯಕ್ಷ ಸ್ಥಾನದ ವೈಜ್ಞಾನಿಕ ಸಮಿತಿ</strong>',
+    endorsementLink: 'ರಿಸಾಲ ಅಲ್-ಹರಮೈನ್',
+    title: 'ಹಂತ ಹಂತವಾಗಿ ವುದೂ ಮಾಡುವ ವಿಧಾನ',
+    desc: 'ಸಂಪ್ರದಾಯಬದ್ಧ ಪ್ರವಾದಿ ಆಚರಣೆಯ ಪ್ರಕಾರ ವುದೂ ಮಾಡುವ ಸರಿಯಾದ ವಿಧಾನವನ್ನು ವಿವರಿಸುವ ಸಂವಾದಾತ್ಮಕ ಪ್ರಾಯೋಗಿಕ ಮಾರ್ಗದರ್ಶಿ.',
+    tabInteractive: 'ಸಂವಾದಾತ್ಮಕ ಮಾರ್ಗದರ್ಶಿ',
+    tabVideo: 'ಅಧಿಕೃತ ವಿಡಿಯೋ ಮಾರ್ಗದರ್ಶಿ',
+    videoTag: 'ಮಸ್ಜಿದ್ ಅಲ್-ಹರಾಮ್‌ನಿಂದ ಅಧಿಕೃತ ಪ್ರಾತ್ಯಕ್ಷಿಕೆ ವಿಡಿಯೋ',
+    videoDesc: 'ಎರಡು ಪವಿತ್ರ ಮಸೀದಿಗಳಲ್ಲಿ ಚಿತ್ರೀಕರಿಸಿದ ಪ್ರವಾದಿ ವುದೂವಿನ ಪ್ರಾಯೋಗಿಕ ಪ್ರಾತ್ಯಕ್ಷಿಕೆ',
+    videoLang: 'ಭಾಷೆ: ಕನ್ನಡ',
+    returnBtn: 'ಸಂವಾದಾತ್ಮಕ ಮಾರ್ಗದರ್ಶಿಗೆ ಮರಳಿ',
+    stepCount: (i, n) => `ಹಂತ ${i} / ${n}`,
+    repLabel: 'ತೊಳೆಯುವಿಕೆ:',
+    repText: { 1: 'ಒಂದು ಬಾರಿ', 3: 'ಮೂರು ಬಾರಿ' },
+    audioListen: 'ಉಚ್ಚಾರಣೆ ಕೇಳಿ',
+    prev: 'ಹಿಂದಿನ',
+    next: 'ಮುಂದಿನ',
+    play: 'ಸ್ವಯಂ ಪ್ಲೇ',
+    pause: 'ವಿರಾಮ',
+    hadith: '"ನೀವು ಹರಿಯುವ ನದಿಯ ಬಳಿ ಇದ್ದರೂ ನೀರನ್ನು ವ್ಯರ್ಥ ಮಾಡಬೇಡಿ."',
+    hadithSource: 'ಪ್ರಾರ್ಥನೆಯಲ್ಲಿ ನೀರಿನ ಸಂರಕ್ಷಣೆ ಮತ್ತು ಜಾಗ್ರತ ಪರಿಸರ ಉಸ್ತುವಾರಿಯನ್ನು ಒತ್ತಿಹೇಳುವ ಪ್ರವಾದಿ ಸಂಪ್ರದಾಯ.',
+    nullTitle: 'ವುದೂ ಅನ್ನು ರದ್ದುಗೊಳಿಸುವ ಸಂಗತಿಗಳು',
+    nullList: [
+      'ಎರಡು ಖಾಸಗಿ ಭಾಗಗಳಿಂದ ಯಾವುದಾದರೂ ಹೊರಬರುವುದು (ಮೂತ್ರ, ಮಲ, ಗಾಳಿ ಇತ್ಯಾದಿ).',
+      'ಪ್ರಜ್ಞೆ ಮತ್ತು ಅರಿವು ಕಳೆದುಹೋಗುವ ಗಾಢ ನಿದ್ದೆ.',
+      'ಮೂರ್ಛೆ, ಮತ್ತು, ಔಷಧ ಅಥವಾ ಹುಚ್ಚಿನಿಂದ ಪ್ರಜ್ಞೆ ಕಳೆದುಕೊಳ್ಳುವುದು.',
+      'ಬಯಕೆಯಿಂದ ಅಡ್ಡಿಯಿಲ್ಲದೆ ಖಾಸಗಿ ಭಾಗಗಳನ್ನು ನೇರವಾಗಿ ಮುಟ್ಟುವುದು.',
+      'ಒಂಟೆ ಮಾಂಸ ಸೇವನೆ (ಹಾನಬಲಿ ಶಾಲೆಯ ಬಲವಾದ ನಿಲುವಿನ ಪ್ರಕಾರ).'
+    ],
+    nullNote: 'ನ್ಯಾಯತಜ್ಞರಿಗೆ ನಿರ್ದಿಷ್ಟ ಸನ್ನಿವೇಶಗಳ ಬಗ್ಗೆ ಸೂಕ್ಷ್ಮ ದೃಷ್ಟಿಕೋನಗಳಿವೆ; ಅಗತ್ಯವಿದ್ದಾಗ ಜ್ಞಾನಿ ವಿದ್ವಾಂಸರನ್ನು ಸಂಪರ್ಕಿಸಿ.',
+    sunanTitle: 'ಶಿಫಾರಸು ಮಾಡಲಾದ ಸುನನ್ ಮತ್ತು ಶಿಷ್ಟಾಚಾರಗಳು',
+    sunanList: [
+      'ವುದೂ ಮೊದಲು ಅಥವಾ ಬಾಯಿ ತೊಳೆಯುವ ಸಮಯದಲ್ಲಿ ಮಿಸ್ವಾಕ್ (ಹಲ್ಲಿನ ಕೋಲು) ಬಳಸುವುದು.',
+      'ಪೂರ್ಣ ತೊಳೆಯುವ ಮೊದಲು ಎರಡೂ ಕೈಗಳನ್ನು ಮೂರು ಬಾರಿ ತೊಳೆಯುವುದು.',
+      'ಬಾಯಿ ಮತ್ತು ಮೂಗನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ತೊಳೆಯುವುದು (ಉಪವಾಸ ಇಲ್ಲದಿದ್ದರೆ).',
+      'ದಟ್ಟ ಗಡ್ಡ ಮತ್ತು ಬೆರಳುಗಳ ಮಧ್ಯೆ ತೇವಾಂಶ ಪ್ರವೇಶಿಸುವಂತೆ ಮಾಡುವುದು (ತಖ್ಲೀಲ್).',
+      'ಎಡ ಭಾಗದ ಮೊದಲು ಬಲ ಭಾಗ ತೊಳೆಯುವುದು (ತಯಮ್ಮುನ್).',
+      'ವುದೂ ಮುಗಿದ ನಂತರ ಶಹಾದ ದುಆ ಓದುವುದು.'
+    ],
+    sunanNote: 'ಸುನನ್ ಆಚರಿಸುವುದು ಪ್ರತಿಫಲವನ್ನು ಹೆಚ್ಚಿಸುತ್ತದೆ ಮತ್ತು ಗೌರವಾನ್ವಿತ ಪ್ರವಾದಿ (ಸ.ಅ.ವ.) ರನ್ನು ಹತ್ತಿರದಿಂದ ಅನುಸರಿಸುತ್ತದೆ.',
+    rateTitle: 'ಸಂದರ್ಶಕರ ಪ್ರತಿಕ್ರಿಯೆ ಮತ್ತು ರೇಟಿಂಗ್',
+    rateSubtitle: 'ಈ ಕಲಿಕಾ ಸಂಪನ್ಮೂಲವನ್ನು ಸತತವಾಗಿ ಉನ್ನತೀಕರಿಸಲು ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆ ಹಂಚಿಕೊಳ್ಳಿ.',
+    namePlaceholder: 'ನಿಮ್ಮ ಹೆಸರು (ಐಚ್ಛಿಕ)',
+    emailPlaceholder: 'ಇಮೇಲ್ ವಿಳಾಸ (ಐಚ್ಛಿಕ)',
+    commentPlaceholder: 'ನಿಮ್ಮ ಟಿಪ್ಪಣಿಗಳು, ಪ್ರಶ್ನೆಗಳು ಅಥವಾ ಸೂಚನೆಗಳನ್ನು ಇಲ್ಲಿ ಬರೆಯಿರಿ...',
+    submitBtn: 'ಪ್ರತಿಕ್ರಿಯೆ ಸಲ್ಲಿಸಿ',
+    sentMsg: 'ಧನ್ಯವಾದ! ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆ ಯಶಸ್ವಿಯಾಗಿ ದಾಖಲಾಗಿದೆ.',
+    needRateMsg: 'ದಯವಿಟ್ಟು ಸಲ್ಲಿಸುವ ಮೊದಲು ಸ್ಟಾರ್ ರೇಟಿಂಗ್ ಆಯ್ಕೆ ಮಾಡಿ.',
+    shareTitle: 'ವುದೂ ಮಾರ್ಗದರ್ಶಿ ಹಂಚಿಕೊಳ್ಳಿ',
+    shareDesc: 'ಈ QR ಕೋಡ್ ಅನ್ನು ನಿಮ್ಮ ಮೊಬೈಲ್ ಕ್ಯಾಮೆರಾದಿಂದ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಮತ್ತು ಇತರ ಮಹಾರಾಶಿ ನಮಾಝ್‌ ಮಾಡುವವರಿಗೆ ಹಂಚಿಕೊಳ್ಳಿ.',
+    copyBtn: 'ನೇರ ಲಿಂಕ್ ನಕಲಿಸಿ',
+    copiedMsg: 'ಲಿಂಕ್ ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ಯಶಸ್ವಿಯಾಗಿ ನಕಲಿಸಲಾಗಿದೆ!',
+    copyFailMsg: 'ಸ್ವಯಂಚಾಲಿತ ನಕಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ; ದಯವಿಟ್ಟು ಬ್ರೌಸರ್ ಬಾರ್‌ನಿಂದ URL ನಕಲಿಸಿ.',
+    footBrand: 'ದೃಶ್ಯ ವುದೂ ಮಾರ್ಗದರ್ಶಿ',
+    footText: 'ಮಾನ್ಯ ಶುದ್ಧೀಕರಣಕ್ಕಾಗಿ ಸಾಮಾನ್ಯ ಶೈಕ್ಷಣಿಕ ಮಾರ್ಗದರ್ಶನ. ನಿರ್ದಿಷ್ಟ ನ್ಯಾಯಶಾಸ್ತ್ರ ಪ್ರಶ್ನೆಗಳಿಗೆ ಅರ್ಹ ವಿದ್ವಾಂಸರನ್ನು ಸಂಪರ್ಕಿಸಿ.',
+    footCopy: '© 2026 ವುದೂ ಮಾರ್ಗದರ್ಶಿ · ಅಲ್ಲಾಹನ ಸಲುವಾಗಿ ಶೈಕ್ಷಣಿಕ ವಕ್ಫ್',
+    limbs: {
+      intention: 'ಹೃದಯ ಮತ್ತು ನಾಲಿಗೆ (ನಿಯ್ಯತ್ ಮತ್ತು ಬಿಸ್ಮಿಲ್ಲಾ)',
+      hands: 'ಮಣಿಕಟ್ಟಿನವರೆಗೆ ಕೈ ತೊಳೆಯುವುದು',
+      mouth: 'ಬಾಯಿ ಮುಕ್ಕಳಿಸುವುದು (ಮಡ್ಮಡಾ)',
+      nose: 'ನೀರು ಮೂಗಿನಲ್ಲಿ ಹಾಕಿ ಹೊರಗೆ ಊದುವುದು (ಇಸ್ತಿನ್ಶಾಕ್)',
+      face: 'ಇಡೀ ಮುಖ ತೊಳೆಯುವುದು',
+      arms: 'ಮೊಣಕೈವರೆಗೆ ತೋಳು ತೊಳೆಯುವುದು',
+      headEars: 'ತಲೆ ಮತ್ತು ಕಿವಿ ಒರೆಸುವುದು',
+      feet: 'ಕಣಕಾಲುವರೆಗೆ ಕಾಲು ತೊಳೆಯುವುದು',
+      duaComplete: 'ಶಿಫಾರಸು ಮಾಡಲಾದ ಮುಕ್ತಾಯ ದುಆ'
+    },
+    duaStartTranslit: 'ಬಿಸ್ಮಿಲ್ಲಾ (ಅಲ್ಲಾಹನ ಹೆಸರಿನಲ್ಲಿ)',
+    duaEndTranslit: 'ಅಲ್ಲಾಹನ ಹೊರತು ಆರಾಧನೆಗೆ ಅರ್ಹ ದೇವರಿಲ್ಲ, ಅವನು ಏಕನಾದ ಪಾಲುದಾರನಿಲ್ಲದ ದೇವರು; ಮತ್ತು ಮುಹಮ್ಮದ್ ಅವನ ದಾಸ ಮತ್ತು ರಸೂಲ್ ಎಂದು ನಾನು ಸಾಕ್ಷ್ಯ ನೀಡುತ್ತೇನೆ. ಓ ಅಲ್ಲಾಹ್, ನನ್ನನ್ನು ನಿರಂತರ ಪಶ್ಚಾತ್ತಾಪ ಪಡುವವರಲ್ಲಿ ಮತ್ತು ತಮ್ಮನ್ನು ಶುದ್ಧಪಡಿಸಿಕೊಳ್ಳುವವರಲ್ಲಿ ಸೇರಿಸು.',
+    steps: [
+      ['ನಿಯ್ಯತ್ ಮತ್ತು ಬಿಸ್ಮಿಲ್ಲಾ', 'ಅಲ್ಲಾಹನ ಸಲುವಾಗಿ ವುದೂ ಮಾಡುವ ಉದ್ದೇಶವನ್ನು ಮನಸ್ಸಿನಲ್ಲಿ ಮಾಡಿ, ನಂತರ: «ಬಿಸ್ಮಿಲ್ಲಾ» ಎಂದು ಹೇಳಿ.'],
+      ['ಕೈ ತೊಳೆಯುವುದು', 'ಎರಡೂ ಕೈಗಳನ್ನು ಮಣಿಕಟ್ಟಿನವರೆಗೆ ಮೂರು ಬಾರಿ ತೊಳೆಯಿರಿ, ಬೆರಳುಗಳ ನಡುವೆ ನೀರು ಹಾದುಹೋಗುವಂತೆ ನೋಡಿಕೊಳ್ಳಿ.'],
+      ['ಬಾಯಿ ಮುಕ್ಕಳಿಸುವುದು', 'ಬಲಗೈಯಿಂದ ಒಂದು ಹಿಡಿ ನೀರು ತೆಗೆದು ಬಾಯಿಯಲ್ಲಿ ಚೆನ್ನಾಗಿ ಮುಕ್ಕಳಿಸಿ ಉಗಿಯಿರಿ, ಮೂರು ಬಾರಿ.'],
+      ['ಮೂಗಿಗೆ ನೀರು ಹಾಕುವುದು', 'ಬಲಗೈಯಿಂದ ಮೂಗಿಗೆ ಮೆಲ್ಲಗೆ ನೀರು ಎಳೆದು, ಎಡ ಕೈಯಿಂದ ಹೊರಗೆ ಊದಿ, ಮೂರು ಬಾರಿ.'],
+      ['ಮುಖ ತೊಳೆಯುವುದು', 'ಕೂದಲಿನ ಬೇರಿನಿಂದ ಗಲ್ಲದ ತಳಭಾಗದವರೆಗೆ ಮತ್ತು ಕಿವಿಯಿಂದ ಕಿವಿಯವರೆಗೆ ಇಡೀ ಮುಖ ತೊಳೆಯಿರಿ, ಮೂರು ಬಾರಿ.'],
+      ['ಮೊಣಕೈವರೆಗೆ ತೋಳು ತೊಳೆಯುವುದು', 'ಬೆರಳ ತುದಿಯಿಂದ ಮೊಣಕೈ ಸೇರಿಸಿ ಬಲ ತೋಳು ಮೂರು ಬಾರಿ ತೊಳೆಯಿರಿ, ನಂತರ ಎಡ ತೋಳು ಹಾಗೆಯೇ ಮಾಡಿ.'],
+      ['ತಲೆ ಮತ್ತು ಕಿವಿ ಒರೆಸುವುದು', 'ತೇವ ಕೈಗಳಿಂದ ಹಣೆಯಿಂದ ಕುತ್ತಿಗೆ ಬೆನ್ನಿಗೆ ಮತ್ತು ಮರಳಿ ಒರೆಸಿ, ನಂತರ ಕಿವಿಯ ಒಳ ಮತ್ತು ಹಿಂಭಾಗ ಒರೆಸಿ, ಒಂದು ಬಾರಿ.'],
+      ['ಕಾಲು ತೊಳೆಯುವುದು', 'ಕಣಕಾಲು ಸೇರಿಸಿ ಬಲ ಕಾಲನ್ನು ಮೂರು ಬಾರಿ ತೊಳೆಯಿರಿ, ಬೆರಳ ನಡುವೆ ಉಜ್ಜಿ, ನಂತರ ಎಡ ಕಾಲು ಹಾಗೆಯೇ.'],
+      ['ವುದೂ ನಂತರ ದುಆ', 'ಮುಗಿದ ನಂತರ ಶಹಾದ ದುಆ ಓದಿ; ಅದನ್ನು ಓದಿದವರಿಗೆ ಸ್ವರ್ಗದ ಎಂಟೂ ಬಾಗಿಲುಗಳು ತೆರೆಯುತ್ತವೆ.']
+    ]
+  },
+  ta: {
+    dir: 'ltr',
+    brand: 'வுளூ வழிகாட்டி',
+    tag: 'தொழுகையாளர்கள் மற்றும் பார்வையாளர்களுக்கான அதிகாரப்பூர்வ காட்சி வழிகாட்டி',
+    endorsementBadge: 'அதிகாரப்பூர்வமாக அங்கீகரிக்கப்பட்டது',
+    endorsementSource: 'தயாரித்தவர்கள்: <strong>மஸ்ஜிதுல் ஹராம் மற்றும் மஸ்ஜிது நபவியில் உள்ள மத விவகார ஆட்சி அதிகார அமைப்பின் அறிவியல் குழு</strong>',
+    endorsementLink: 'ரிஸாலா அல்-ஹரமைன்',
+    title: 'படிப்படியாக வுளூ செய்வது எப்படி',
+    desc: 'நம்பகமான நபி வழக்கத்தின்படி வுளூ சரியாக செய்வது எப்படி என்பதை விவரிக்கும் ஊடாடும் நடைமுறை வழிகாட்டி.',
+    tabInteractive: 'ஊடாடும் வழிகாட்டி',
+    tabVideo: 'அதிகாரப்பூர்வ வீடியோ வழிகாட்டி',
+    videoTag: 'மஸ்ஜிதுல் ஹராமிலிருந்து அதிகாரப்பூர்வ நிரூபண வீடியோ',
+    videoDesc: 'இரண்டு புனித மசூதிகளில் படமாக்கப்பட்ட நபி வழி வுளூவின் நடைமுறை நிரூபணம்',
+    videoLang: 'மொழி: தமிழ்',
+    returnBtn: 'ஊடாடும் வழிகாட்டிக்கு திரும்பு',
+    stepCount: (i, n) => `படி ${i} / ${n}`,
+    repLabel: 'கழுவுகள்:',
+    repText: { 1: 'ஒரு முறை', 3: 'மூன்று முறை' },
+    audioListen: 'உச்சரிப்பு கேளுங்கள்',
+    prev: 'முந்தைய',
+    next: 'அடுத்த',
+    play: 'தானியங்கி இயக்கம்',
+    pause: 'இடைநிறுத்தம்',
+    hadith: '"நீங்கள் ஓடும் ஆற்றினருகில் இருந்தாலும் தண்ணீரை வீணாக்காதீர்கள்."',
+    hadithSource: 'வழிபாட்டில் தண்ணீர் பாதுகாப்பு மற்றும் கவனமான சுற்றுச்சூழல் பராமரிப்பை வலியுறுத்தும் நபி மரபு.',
+    nullTitle: 'வுளூவை நீக்குவது என்ன',
+    nullList: [
+      'இரு தனிமைப் பகுதிகளிலிருந்து வெளியேறும் எதுவும் (சிறுநீர், மலம், காற்று போன்றவை).',
+      'விழிப்புணர்வும் உணர்வும் இழந்துவிடும் ஆழ்ந்த தூக்கம்.',
+      'மயக்கம், போதை, மருந்து அல்லது மனநிலை மாற்றம் காரணமாக நனவிழத்தல்.',
+      'ஆசையுடன் தடையின்றி தனிமைப் பகுதிகளை நேரடியாக தொடுவது.',
+      'ஒட்டக மாமிசம் உண்பது (ஹன்பலி கோட்பாட்டின்படி).'
+    ],
+    nullNote: 'சட்ட அறிஞர்களுக்கு குறிப்பிட்ட சூழ்நிலைகளில் நுட்பமான கண்ணோட்டங்கள் உள்ளன; தேவைப்படும்போது அறிவாளி மார்க்க அறிஞர்களை அணுகுங்கள்.',
+    sunanTitle: 'பரிந்துரைக்கப்பட்ட சுன்னத்கள் மற்றும் நல்லொழுக்கங்கள்',
+    sunanList: [
+      'வுளூவுக்கு முன்பு அல்லது வாய் கொப்பளிக்கும்போது மிஸ்வாக் (பல் குச்சி) பயன்படுத்துவது.',
+      'முழு கழுவல் தொடங்குவதற்கு முன்பு இரு கைகளையும் மூன்று முறை கழுவுவது.',
+      'வாயையும் மூக்கையும் முழுமையாக கொப்பளிப்பது (நோன்பு இல்லாவிட்டால்).',
+      'அடர்ந்த தாடி மற்றும் விரல்களுக்கிடையே தண்ணீர் ஊடுருவுமாறு செய்வது (தக்லீல்).',
+      'இடது பக்கத்திற்கு முன் வலது பக்கத்தில் தொடங்குவது (தையம்முன்).',
+      'வுளூ முடிந்தவுடன் ஷஹாதா துஆ ஓதுவது.'
+    ],
+    sunanNote: 'சுன்னத்களை கடைப்பிடிப்பது நற்பலனை பல மடங்கு ஆக்கி, மரியாதைக்குரிய நபி (ஸல்) யை நெருங்கி பின்பற்றுவதாகும்.',
+    rateTitle: 'பார்வையாளர் கருத்து மற்றும் மதிப்பீடுகள்',
+    rateSubtitle: 'இந்த கற்றல் ஆதாரத்தை தொடர்ந்து மேம்படுத்த உங்கள் கருத்தை பகிர்ந்துகொள்ளுங்கள்.',
+    namePlaceholder: 'உங்கள் பெயர் (விருப்பமானது)',
+    emailPlaceholder: 'மின்னஞ்சல் முகவரி (விருப்பமானது)',
+    commentPlaceholder: 'உங்கள் கருத்துகள், கேள்விகள் அல்லது குறிப்புகளை இங்கே எழுதுங்கள்...',
+    submitBtn: 'கருத்தை சமர்பிக்கவும்',
+    sentMsg: 'நன்றி! உங்கள் கருத்து வெற்றிகரமாக பதிவு செய்யப்பட்டது.',
+    needRateMsg: 'சமர்பிக்கும் முன்பு முதலில் நட்சத்திர மதிப்பீட்டை தேர்ந்தெடுக்கவும்.',
+    shareTitle: 'வுளூ வழிகாட்டியை பகிர்ந்துகொள்ளுங்கள்',
+    shareDesc: 'இந்த QR குறியீட்டை உங்கள் மொபைல் கேமராவால் ஸ்கேன் செய்து இதை சக தொழுகையாளர்களுடன் பகிர்ந்துகொள்ளுங்கள்.',
+    copyBtn: 'நேரடி இணைப்பை நகலெடு',
+    copiedMsg: 'இணைப்பு கிளிப்போர்டுக்கு வெற்றிகரமாக நகலெடுக்கப்பட்டது!',
+    copyFailMsg: 'தானாக நகலெடுக்க முடியவில்லை; உலாவி பட்டியிலிருந்து URL ஐ நகலெடுக்கவும்.',
+    footBrand: 'காட்சி வுளூ வழிகாட்டி',
+    footText: 'சரியான தூய்மைப்படுத்தலுக்கான பொதுவான கல்வி வழிகாட்டுதல். குறிப்பிட்ட சட்ட கேள்விகளுக்கு தகுதிவாய்ந்த மார்க்க அறிஞர்களை அணுகுங்கள்.',
+    footCopy: '© 2026 வுளூ வழிகாட்டி · அல்லாஹ்வின் நிமிட்டம் கல்வி வக்ஃப்',
+    limbs: {
+      intention: 'இதயம் மற்றும் நாக்கு (நிய்யத் மற்றும் பிஸ்மில்லா)',
+      hands: 'மணிக்கட்டு வரை கைகளை கழுவுவது',
+      mouth: 'வாயை கொப்பளிப்பது (மட்மதா)',
+      nose: 'மூக்கில் நீர் இழுத்து வெளியேற்றுவது (இஸ்தின்ஷாக்)',
+      face: 'முழு முகத்தை கழுவுவது',
+      arms: 'முழங்கை வரை கைகளை கழுவுவது',
+      headEars: 'முழு தலை மற்றும் காதுகளை துடைப்பது',
+      feet: 'கணுக்கால் வரை பாதங்களை கழுவுவது',
+      duaComplete: 'பரிந்துரைக்கப்பட்ட முடிவு துஆ'
+    },
+    duaStartTranslit: 'பிஸ்மில்லா (அல்லாஹ்வின் பெயரால்)',
+    duaEndTranslit: 'அல்லாஹ்வை தவிர வணக்கத்திற்குரிய கடவுள் இல்லை என்றும், முஹம்மத் அவரது அடியார் மற்றும் தூதர் என்றும் சாட்சி கூறுகிறேன். இறைவனே, என்னை தொடர்ந்து மனம் திரும்புவோரிலும், தங்களை தூய்மைப்படுத்திக்கொள்வோரிலும் சேர்ப்பாயாக.',
+    steps: [
+      ['நிய்யத் மற்றும் பிஸ்மில்லா', 'அல்லாஹ்வுக்காக வுளூ செய்யும் நிய்யத்தை மனதில் வையுங்கள், பின்னர்: «பிஸ்மில்லா» என்று கூறுங்கள்.'],
+      ['கைகளை கழுவுவது', 'இரு கைகளையும் மணிக்கட்டு வரை மூன்று முறை கழுவுங்கள், விரல்களுக்கிடையே தண்ணீர் ஊடுருவுமாறு.'],
+      ['வாயை கொப்பளிப்பது', 'வலது கையால் ஒரு கை தண்ணீர் எடுத்து வாயில் நன்றாக கொப்பளித்து துப்புங்கள், மூன்று முறை.'],
+      ['மூக்கில் தண்ணீர் இழுப்பது', 'வலது கையால் மூக்கில் மெல்லமாக தண்ணீர் இழுத்து, இடது கையால் வெளியேற்றுங்கள், மூன்று முறை.'],
+      ['முகம் கழுவுவது', 'தலை முடியின் அடிவேரிலிருந்து கன்னத்தின் அடிவரை மற்றும் காதிலிருந்து காது வரை முழு முகத்தை கழுவுங்கள், மூன்று முறை.'],
+      ['முழங்கை வரை கைகளை கழுவுவது', 'விரல் நுனியிலிருந்து முழங்கை சேர்த்து வலது கையை மூன்று முறை கழுவுங்கள், பின்னர் இடது கையை அதேபோல் செய்யுங்கள்.'],
+      ['தலை மற்றும் காதுகளை துடைப்பது', 'ஈரமான கைகளால் நெற்றியிலிருந்து தலையின் பின்புறம் வரை மற்றும் திரும்பி துடையுங்கள், பின்னர் காதின் உள்ளும் பின்னும் துடையுங்கள், ஒரு முறை.'],
+      ['பாதங்களை கழுவுவது', 'கணுக்கால் சேர்த்து வலது பாதத்தை மூன்று முறை கழுவுங்கள், விரல்களுக்கிடையே உரசி, பின்னர் இடது பாதத்தை அதேபோல்.'],
+      ['வுளூவுக்கு பின் துஆ', 'முடிந்தவுடன் ஷஹாதா துஆ ஓதுங்கள்; அதை ஓதுவோருக்கு சுவர்க்கத்தின் எட்டு வாயில்களும் திறக்கப்படும்.']
+    ]
+  },
+  te: {
+    dir: 'ltr',
+    brand: 'వుజూ గైడ్',
+    tag: 'నమాజు చదువువారు మరియు సందర్శకుల కోసం అధికారిక దృశ్య గైడ్',
+    endorsementBadge: 'అధికారికంగా ఆమోదించబడింది',
+    endorsementSource: 'తయారు చేసినవారు: <strong>మస్జిదుల్ హరామ్ మరియు మస్జిదె నబవిలో మత వ్యవహారాల అధ్యక్ష స్థాన శాస్త్రీయ సంఘం</strong>',
+    endorsementLink: 'రిసాల అల్-హరమైన్',
+    title: 'దశ దశగా వుజూ ఎలా చేయాలి',
+    desc: 'ప్రామాణిక నబీ ఆచారానుసారం వుజూ సరిగ్గా చేయడం ఎలాగో వివరించే ఇంటరాక్టివ్ ప్రాక్టికల్ గైడ్.',
+    tabInteractive: 'ఇంటరాక్టివ్ గైడ్',
+    tabVideo: 'అధికారిక వీడియో గైడ్',
+    videoTag: 'మస్జిదుల్ హరామ్ నుండి అధికారిక ప్రదర్శన వీడియో',
+    videoDesc: 'రెండు పవిత్ర మసీదులలో చిత్రీకరించిన నబీ వుజూ యొక్క ప్రాక్టికల్ ప్రదర్శన',
+    videoLang: 'భాష: తెలుగు',
+    returnBtn: 'ఇంటరాక్టివ్ గైడ్‌కు తిరిగి వెళ్ళు',
+    stepCount: (i, n) => `దశ ${i} / ${n}`,
+    repLabel: 'కడగడాలు:',
+    repText: { 1: 'ఒకసారి', 3: 'మూడు సార్లు' },
+    audioListen: 'ఉచ్చారణ వినండి',
+    prev: 'మునుపటి',
+    next: 'తదుపరి',
+    play: 'ఆటో ప్లే',
+    pause: 'పాజ్',
+    hadith: '"మీరు ప్రవహించే ప్రవాహం దగ్గర ఉన్నా నీటిని వృధా చేయకండి."',
+    hadithSource: 'ఆరాధనలో నీటి పొదుపు మరియు జాగ్రత్తగా పర్యావరణ పరిరక్షణను నొక్కిచెప్పే నబీ సంప్రదాయం.',
+    nullTitle: 'వుజూను చెల్లుబాటు చేయనివి',
+    nullList: [
+      'రెండు ప్రైవేట్ భాగాల నుండి వచ్చే ఏదైనా (మూత్రం, మలం, వాయువు మొదలైనవి).',
+      'స్పృహ మరియు అవగాహన పోయే గాఢ నిద్ర.',
+      'మూర్ఛ, మత్తు, ఔషధం లేదా పిచ్చి కారణంగా స్పృహ కోల్పోవడం.',
+      'కోరికతో అడ్డంకి లేకుండా ప్రైవేట్ భాగాలను నేరుగా తాకడం.',
+      'ఒంటె మాంసం తినడం (హన్బలీ మదహబ్ బలమైన అభిప్రాయం ప్రకారం).'
+    ],
+    nullNote: 'న్యాయనిపుణులకు నిర్దిష్ట పరిస్థితులలో సూక్ష్మమైన అభిప్రాయాలు ఉంటాయి; అవసరమైనప్పుడు పండిత విద్వాంసులను సంప్రదించండి.',
+    sunanTitle: 'సూచించబడిన సున్నత్లు మరియు మర్యాదలు',
+    sunanList: [
+      'వుజూకి ముందు లేదా నోరు కడగడం సమయంలో మిస్వాక్ (పళ్ళ కడ్డీ) ఉపయోగించడం.',
+      'పూర్తి కడగడం ప్రారంభించే ముందు రెండు చేతులను మూడు సార్లు కడగడం.',
+      'నోరు మరియు ముక్కును పూర్తిగా కడగడం (ఉపవాసం లేకుంటే).',
+      'దట్టమైన గడ్డం మరియు వేళ్ళ మధ్య నీరు వెళ్ళేలా చేయడం (తఖ్లీల్).',
+      'ఎడమ వైపు కంటే ముందు కుడి వైపు ప్రారంభించడం (తైయమ్మున్).',
+      'వుజూ అయిన తర్వాత షహాదా దుఆ చదవడం.'
+    ],
+    sunanNote: 'సున్నత్లు ఆచరించడం ప్రతిఫలాన్ని రెట్టింపు చేస్తుంది మరియు గౌరవనీయ నబీ (స.అ.వ.) ని దగ్గరగా అనుసరించడం అవుతుంది.',
+    rateTitle: 'సందర్శకుల అభిప్రాయాలు మరియు రేటింగ్లు',
+    rateSubtitle: 'ఈ నేర్చుకునే వనరును నిరంతరం మెరుగుపరచడానికి మీ అభిప్రాయాన్ని పంచుకోండి.',
+    namePlaceholder: 'మీ పేరు (ఐచ్ఛికం)',
+    emailPlaceholder: 'ఇమెయిల్ చిరునామా (ఐచ్ఛికం)',
+    commentPlaceholder: 'మీ వ్యాఖ్యలు, ప్రశ్నలు లేదా నోట్లు ఇక్కడ రాయండి...',
+    submitBtn: 'అభిప్రాయాన్ని సమర్పించండి',
+    sentMsg: 'ధన్యవాదాలు! మీ అభిప్రాయం విజయవంతంగా నమోదు చేయబడింది.',
+    needRateMsg: 'సమర్పించే ముందు మొదట స్టార్ రేటింగ్ ఎంచుకోండి.',
+    shareTitle: 'వుజూ గైడ్ పంచుకోండి',
+    shareDesc: 'ఈ QR కోడ్‌ను మీ మొబైల్ కెమెరాతో స్కాన్ చేసి నేనమ్మ ముస్లిమ్ సోదరులతో పంచుకోండి.',
+    copyBtn: 'నేరుగా లింక్ కాపీ చేయండి',
+    copiedMsg: 'లింక్ క్లిప్‌బోర్డ్‌కు విజయవంతంగా కాపీ చేయబడింది!',
+    copyFailMsg: 'స్వయంచాలకంగా కాపీ చేయడం సాధ్యం కాలేదు; మీ బ్రౌజర్ బార్ నుండి URL కాపీ చేయండి.',
+    footBrand: 'దృశ్య వుజూ గైడ్',
+    footText: 'చెల్లుబాటు అయ్యే పవిత్రీకరణ కోసం సాధారణ విద్యా మార్గదర్శనం. నిర్దిష్ట న్యాయ ప్రశ్నలకు అర్హులైన పండితులను సంప్రదించండి.',
+    footCopy: '© 2026 వుజూ గైడ్ · అల్లాహ్ పేరిట విద్యా వక్ఫ్',
+    limbs: {
+      intention: 'హృదయం మరియు నాలుక (నియ్యత్ మరియు బిస్మిల్లా)',
+      hands: 'మణికట్టు వరకు చేతులు కడగడం',
+      mouth: 'నోరు మూసుకోవడం (మడ్మడా)',
+      nose: 'ముక్కులో నీరు పీల్చి వదలడం (ఇస్తిన్షాక్)',
+      face: 'పూర్తి ముఖం కడగడం',
+      arms: 'మోచేయి వరకు చేతులు కడగడం',
+      headEars: 'తల మరియు చెవులు తుడవడం',
+      feet: 'గజ్జు వరకు పాదాలు కడగడం',
+      duaComplete: 'సూచించబడిన ముగింపు దుఆ'
+    },
+    duaStartTranslit: 'బిస్మిల్లా (అల్లాహ్ పేరిట)',
+    duaEndTranslit: 'అల్లాహ్ తప్ప ఆరాధనకు అర్హుడు ఎవరూ లేరని, మరియు ముహమ్మద్ ఆయన దాసుడు మరియు రసూల్ అని సాక్ష్యం చెప్తున్నాను. ఓ అల్లాహ్, నన్ను నిరంతరం పశ్చాత్తాపపడే వారిలో మరియు తమను తాము పవిత్రం చేసుకునే వారిలో చేర్చు.',
+    steps: [
+      ['నియ్యత్ మరియు బిస్మిల్లా', 'అల్లాహ్ కోసం వుజూ చేసే నియ్యత్ మనసులో పెట్టుకోండి, ఆపై: «బిస్మిల్లా» అని చెప్పండి.'],
+      ['చేతులు కడగడం', 'రెండు చేతులను మణికట్టు వరకు మూడు సార్లు కడగండి, వేళ్ళ మధ్య నీరు వెళ్ళేలా చూసుకోండి.'],
+      ['నోరు మూసుకోవడం', 'కుడి చేతితో ఒక పిడికెడు నీరు తీసుకుని నోటిలో పూర్తిగా మూసుకుని ఉమ్మేయండి, మూడు సార్లు.'],
+      ['ముక్కులో నీరు పీల్చడం', 'కుడి చేతితో ముక్కులో మెల్లగా నీరు పీల్చి, ఎడమ చేతితో వెళ్ళగొట్టండి, మూడు సార్లు.'],
+      ['ముఖం కడగడం', 'జుట్టు పాదం నుండి గడ్డం అడుగు వరకు మరియు చెవి నుండి చెవి వరకు పూర్తి ముఖాన్ని కడగండి, మూడు సార్లు.'],
+      ['మోచేయి వరకు చేతులు కడగడం', 'వేళ్ళ చివర నుండి మోచేయి సహా కుడి చేతిని మూడు సార్లు కడగండి, ఆపై ఎడమ చేతిని అదే విధంగా చేయండి.'],
+      ['తల మరియు చెవులు తుడవడం', 'తడి చేతులతో నుదటి నుండి తల వెనుకకు మరియు తిరిగి తుడవండి, ఆపై చెవి లోపలా మరియు వెనుకా తుడవండి, ఒకసారి.'],
+      ['పాదాలు కడగడం', 'గజ్జు సహా కుడి పాదాన్ని మూడు సార్లు కడగండి, వేళ్ళ మధ్య రాయండి, ఆపై ఎడమ పాదాన్ని అదే విధంగా.'],
+      ['వుజూ తర్వాత దుఆ', 'ముగించిన తర్వాత షహాదా దుఆ చదవండి; దాన్ని చదివే వారికి స్వర్గం యొక్క ఎనిమిది తలుపులు తెరుచుకుంటాయి.']
+    ]
+  },
+  mr: {
+    dir: 'ltr',
+    brand: 'वुज़ू मार्गदर्शिका',
+    tag: 'नमाज़ पढणाऱ्या आणि अभ्यागतांसाठी अधिकृत दृश्य मार्गदर्शिका',
+    endorsementBadge: 'अधिकृतपणे मान्यताप्राप्त',
+    endorsementSource: 'तयार केलेले: <strong>मस्जिदुल हराम आणि मस्जिदे नबवीमधील धार्मिक व्यवहार अध्यक्षपदाची वैज्ञानिक समिती</strong>',
+    endorsementLink: 'रिसाला अल-हरमैन',
+    title: 'वुज़ू कसे करावे - पायरीपायरीने',
+    desc: 'प्रामाणिक नबी परंपरेनुसार वुज़ू सरिगेप्रकारे कसे करावे हे सांगणारी परस्परसंवादी व्यावहारिक मार्गदर्शिका.',
+    tabInteractive: 'परस्परसंवादी मार्गदर्शिका',
+    tabVideo: 'अधिकृत व्हिडिओ मार्गदर्शिका',
+    videoTag: 'मस्जिदुल हरामकडून अधिकृत प्रात्यक्षिक व्हिडिओ',
+    videoDesc: 'दोन पवित्र मशिदींमध्ये चित्रित केलेल्या नबी वुज़ूचे व्यावहारिक प्रात्यक्षिक',
+    videoLang: 'भाषा: मराठी',
+    returnBtn: 'परस्परसंवादी मार्गदर्शिकेवर परत या',
+    stepCount: (i, n) => `पायरी ${i} / ${n}`,
+    repLabel: 'धुणे:',
+    repText: { 1: 'एकदा', 3: 'तीन वेळा' },
+    audioListen: 'उच्चारण ऐका',
+    prev: 'मागील',
+    next: 'पुढील',
+    play: 'आपोआप चालू',
+    pause: 'थांबवा',
+    hadith: '"वाहत्या ओढ्याजवळ असलात तरी पाणी वाया घालवू नका."',
+    hadithSource: 'उपासनेतील पाणी संवर्धन आणि सजग पर्यावरण जबाबदारीवर जोर देणारी नबी परंपरा.',
+    nullTitle: 'वुज़ू मोडणाऱ्या गोष्टी',
+    nullList: [
+      'दोन खासगी भागांमधून बाहेर पडणारी कोणतीही गोष्ट (लघवी, मल, वायू इ.).',
+      'खोल झोप ज्यामध्ये जाणीव आणि भान हरवते.',
+      'मूर्च्छा, नशा, औषध किंवा वेडेपणामुळे शुद्ध हरपणे.',
+      'इच्छेने अडथळ्याशिवाय खासगी भागांना थेट स्पर्श करणे.',
+      'उंटाचे मांस खाणे (हंबली मतानुसार).'
+    ],
+    nullNote: 'न्यायतज्ञांकडे विशिष्ट परिस्थितींवर सूक्ष्म दृष्टिकोन असतात; आवश्यकतेनुसार जाणकार विद्वानांशी सल्लामसलत करा.',
+    sunanTitle: 'शिफारस केलेल्या सुन्नत आणि शिष्टाचार',
+    sunanList: [
+      'वुज़ूआधी किंवा चूळ भरताना मिसवाक (दात काठी) वापरणे.',
+      'पूर्ण धुण्यापूर्वी दोन्ही हात तीन वेळा धुणे.',
+      'तोंड आणि नाक पूर्णपणे स्वच्छ करणे (उपवास नसल्यास).',
+      'घनदाट दाढी आणि बोटांमध्ये पाणी पोहोचवणे (तखलील).',
+      'उजव्या बाजूने सुरुवात करणे, नंतर डावी (तयम्मुन).',
+      'वुज़ू झाल्यावर शहादा दुआ म्हणणे.'
+    ],
+    sunanNote: 'सुन्नतचे पालन केल्याने पुण्य अनेक पटींनी वाढते आणि नबी (स.अ.व.) यांचे जवळून अनुसरण होते.',
+    rateTitle: 'अभ्यागतांचे अभिप्राय आणि रेटिंग',
+    rateSubtitle: 'ही शैक्षणिक संसाधन सतत सुधारण्यासाठी आपले मत सांगा.',
+    namePlaceholder: 'आपले नाव (पर्यायी)',
+    emailPlaceholder: 'ईमेल पत्ता (पर्यायी)',
+    commentPlaceholder: 'आपले विचार, प्रश्न किंवा नोट्स येथे लिहा...',
+    submitBtn: 'अभिप्राय सादर करा',
+    sentMsg: 'धन्यवाद! आपला अभिप्राय यशस्वीरित्या नोंदवला गेला.',
+    needRateMsg: 'सादर करण्यापूर्वी आधी स्टार रेटिंग निवडा.',
+    shareTitle: 'वुज़ू मार्गदर्शिका सामायिक करा',
+    shareDesc: 'हा QR कोड आपल्या मोबाईल कॅमेऱ्याने स्कॅन करा आणि इतर नमाज़ पढणाऱ्यांसोबत सामायिक करा.',
+    copyBtn: 'थेट लिंक कॉपी करा',
+    copiedMsg: 'लिंक क्लिपबोर्डवर यशस्वीरित्या कॉपी केली!',
+    copyFailMsg: 'आपोआप कॉपी करणे शक्य झाले नाही; ब्राउझरच्या बारमधून URL कॉपी करा.',
+    footBrand: 'दृश्य वुज़ू मार्गदर्शिका',
+    footText: 'वैध शुद्धीकरणासाठी सामान्य शैक्षणिक मार्गदर्शन. विशिष्ट न्यायशास्त्र प्रश्नांसाठी पात्र विद्वानांशी सल्लामसलत करा.',
+    footCopy: '© 2026 वुज़ू मार्गदर्शिका · अल्लाहच्या नावाने शैक्षणिक वक्फ',
+    limbs: {
+      intention: 'हृदय आणि जीभ (नियत आणि बिस्मिल्लाह)',
+      hands: 'मनगटापर्यंत हात धुणे',
+      mouth: 'चूळ भरणे (मडमडा)',
+      nose: 'नाकात पाणी घेणे आणि सोडणे (इस्तिन्शाक)',
+      face: 'संपूर्ण चेहरा धुणे',
+      arms: 'कोपरापर्यंत हात धुणे',
+      headEars: 'संपूर्ण डोके आणि कान पुसणे',
+      feet: 'घोट्यापर्यंत पाय धुणे',
+      duaComplete: 'शिफारस केलेली समापन दुआ'
+    },
+    duaStartTranslit: 'बिस्मिल्लाह (अल्लाहच्या नावाने)',
+    duaEndTranslit: 'मी साक्ष देतो की अल्लाहशिवाय उपासनेस पात्र कोणी नाही, तो एकटा आहे, त्याला कोणी भागीदार नाही, आणि मुहम्मद त्यांचे बंदे आणि रसूल आहेत. हे अल्लाह, मला सतत पश्चाताप करणाऱ्यांमध्ये आणि स्वतःला पवित्र ठेवणाऱ्यांमध्ये सामील कर.',
+    steps: [
+      ['नियत आणि बिस्मिल्लाह', 'अल्लाहसाठी वुज़ू करण्याची नियत मनात करा, मग: «बिस्मिल्लाह» म्हणा.'],
+      ['हात धुणे', 'दोन्ही हात मनगटापर्यंत तीन वेळा धुवा, बोटांमध्ये पाणी जाईल याची काळजी घ्या.'],
+      ['चूळ भरणे', 'उजव्या हाताने एक ओंजळ पाणी घेऊन तोंडात नीट फिरवा आणि थुंका, तीन वेळा.'],
+      ['नाकात पाणी घेणे', 'उजव्या हाताने नाकात हळूवारपणे पाणी ओढा, मग डाव्या हाताने सोडा, तीन वेळा.'],
+      ['चेहरा धुणे', 'केसांच्या मुळापासून हनुवटीच्या खालपर्यंत आणि एका कानापासून दुसऱ्या कानापर्यंत संपूर्ण चेहरा धुवा, तीन वेळा.'],
+      ['कोपरापर्यंत हात धुणे', 'बोटांच्या टोकापासून कोपरासहित उजवा हात तीन वेळा धुवा, मग डावा हात तसेच करा.'],
+      ['डोके आणि कान पुसणे', 'ओल्या हातांनी कपाळापासून मानेमागे आणि परत पुसा, मग कानाचा आतील आणि मागील भाग पुसा, एकदा.'],
+      ['पाय धुणे', 'घोट्यासहित उजवा पाय तीन वेळा धुवा, बोटांमध्ये चोळा, मग डावा पाय तसेच तीन वेळा.'],
+      ['वुज़ूनंतर दुआ', 'झाल्यावर शहादा दुआ म्हणा; जो ती म्हणतो त्यासाठी जन्नतचे आठही दरवाजे उघडतात.']
+    ]
+  }
+};
+
+/* ==========================================================================
+   STATE MANAGEMENT
+   ========================================================================== */
+const store = {
+  get(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  },
+  set(key, val) {
+    try { localStorage.setItem(key, val); } catch (e) {}
+  }
+};
+
+let currentLang = store.get('wudu-lang') || 'ar';
+if (!I18N[currentLang]) currentLang = 'ar';
+
+let currentStep = 0;
+let isPlaying = false;
+let playTimer = null;
+let currentRating = 0;
+let activeMode = 'interactive'; // 'interactive' or 'video'
+let completedReps = 0;
+
+/* ==========================================================================
+   DOM ELEMENTS SELECTORS
+   ========================================================================== */
+const $ = id => document.getElementById(id);
+
+/* ==========================================================================
+   UI RENDERING FUNCTIONS
+   ========================================================================== */
+function renderApp() {
+  const dict = I18N[currentLang];
+
+  // Document metadata and direction
+  document.documentElement.lang = currentLang;
+  document.documentElement.dir = dict.dir;
+  document.body.dataset.lang = currentLang;
+  document.title = `${dict.title} · ${dict.brand}`;
+
+  // Header & Brand
+  $('brandName').textContent = dict.brand;
+  $('brandTag').textContent = dict.tag;
+
+  // Language buttons pressed state
+  document.querySelectorAll('#langSelector button').forEach(b => {
+    b.setAttribute('aria-pressed', b.dataset.l === currentLang);
+  });
+
+  // Endorsement
+  $('endorsementBadgeText').textContent = dict.endorsementBadge;
+  $('endorsementSource').innerHTML = dict.endorsementSource;
+  $('endorsementLinkText').textContent = dict.endorsementLink;
+
+  // Hero titles & tabs
+  $('pageTitle').textContent = dict.title;
+  $('pageDesc').textContent = dict.desc;
+  $('tabInteractiveLabel').textContent = dict.tabInteractive;
+  $('tabVideoLabel').textContent = dict.tabVideo;
+
+  // Video view labels & source URL
+  $('videoTitleTag').textContent = dict.videoTag;
+  $('videoDescSource').textContent = dict.videoDesc;
+  $('videoLangIndicator').textContent = dict.videoLang;
+  $('btnReturnText').textContent = dict.returnBtn;
+
+  // Switch Video Source according to selected language
+  const targetVideoUrl = VIDEO_SOURCES[currentLang] || VIDEO_SOURCES.ar;
+  const videoEl = $('officialVideoPlayer');
+  if ($('videoSourceEl').src !== targetVideoUrl) {
+    $('videoSourceEl').src = targetVideoUrl;
+    videoEl.load();
+  }
+
+  // Navigation button text
+  $('btnPrevText').textContent = dict.prev;
+  $('btnNextText').textContent = dict.next;
+  $('washRepLabel').textContent = dict.repLabel;
+
+  // Hadith Card
+  $('hadithText').textContent = dict.hadith;
+  $('hadithSource').textContent = dict.hadithSource;
+
+  // Jurisprudence: Nullifiers
+  $('nullTitle').textContent = dict.nullTitle;
+  $('nullNote').textContent = dict.nullNote;
+  const nullUl = $('nullList');
+  nullUl.innerHTML = '';
+  dict.nullList.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    nullUl.appendChild(li);
+  });
+
+  // Jurisprudence: Sunan
+  $('sunanTitle').textContent = dict.sunanTitle;
+  $('sunanNote').textContent = dict.sunanNote;
+  const sunanUl = $('sunanList');
+  sunanUl.innerHTML = '';
+  dict.sunanList.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    sunanUl.appendChild(li);
+  });
+
+  // Feedback section
+  $('rateTitle').textContent = dict.rateTitle;
+  $('rateSubtitle').textContent = dict.rateSubtitle;
+  $('feedbackName').placeholder = dict.namePlaceholder;
+  $('feedbackEmail').placeholder = dict.emailPlaceholder;
+  $('feedbackComment').placeholder = dict.commentPlaceholder;
+  $('submitFeedbackText').textContent = dict.submitBtn;
+
+  // Modal Text
+  $('modalShareTitle').textContent = dict.shareTitle;
+  $('modalShareDesc').textContent = dict.shareDesc;
+  $('copyLinkText').textContent = dict.copyBtn;
+
+  // Footer
+  $('footerBrand').textContent = dict.footBrand;
+  $('footerText').textContent = dict.footText;
+  $('footerCopyright').textContent = dict.footCopy;
+
+  // Re-render Step Chips
+  renderStepChips();
+
+  // Re-render Stars & Reviews
+  renderStars();
+  renderComments();
+
+  // Render current step details
+  renderStep();
+}
+
+function renderStepChips() {
+  const dict = I18N[currentLang];
+  const nav = $('stepsCarousel');
+  nav.innerHTML = '';
+
+  dict.steps.forEach((stepItem, idx) => {
+    const chip = document.createElement('button');
+    chip.className = 'step-chip';
+    chip.setAttribute('type', 'button');
+
+    const em = document.createElement('em');
+    em.textContent = idx + 1;
+
+    const titleSpan = document.createElement('span');
+    titleSpan.textContent = stepItem[0];
+
+    chip.append(em, titleSpan);
+    chip.addEventListener('click', () => {
+      pausePlayMode();
+      goToStep(idx);
+    });
+
+    nav.appendChild(chip);
+  });
+}
+
+function renderStep() {
+  const dict = I18N[currentLang];
+  const stepConfig = STEPS[currentStep];
+  const total = STEPS.length;
+
+  // Badge & Title
+  $('stepCounterBadge').textContent = dict.stepCount(currentStep + 1, total);
+  $('stepHeading').textContent = dict.steps[currentStep][0];
+  $('stepInstruction').textContent = dict.steps[currentStep][1];
+
+  // Active limb name indicator
+  $('activeLimbName').textContent = dict.limbs[stepConfig.limbKey] || '';
+
+  // Supplication / Dua Display
+  const duaBox = $('duaBox');
+  if (stepConfig.dua) {
+    duaBox.hidden = false;
+    $('duaArabic').textContent = stepConfig.dua;
+    $('duaTranslit').textContent = dict[stepConfig.translitKey] || '';
+    $('audioButtonText').textContent = dict.audioListen;
+  } else {
+    duaBox.hidden = true;
+  }
+
+  // Repetition Droplets
+  const dropletBox = $('washDroplets');
+  dropletBox.innerHTML = '';
+  completedReps = Math.min(completedReps, stepConfig.reps);
+
+  for (let r = 1; r <= stepConfig.reps; r++) {
+    const btn = document.createElement('button');
+    btn.className = 'droplet-btn' + (r <= completedReps ? ' active' : '');
+    btn.setAttribute('aria-label', `Repetition ${r}`);
+    btn.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>`;
+    
+    btn.addEventListener('click', () => {
+      completedReps = (completedReps === r) ? r - 1 : r;
+      renderStep();
+    });
+
+    dropletBox.appendChild(btn);
+  }
+
+  // SVG Mannequin Active Zones
+  document.querySelectorAll('#fig .z').forEach(zone => {
+    const isTarget = stepConfig.z.includes(zone.dataset.z);
+    zone.classList.toggle('on', isTarget);
+  });
+
+  // Carousel active state
+  const chips = $('stepsCarousel').children;
+  [...chips].forEach((chip, i) => {
+    if (i === currentStep) {
+      chip.setAttribute('aria-current', 'step');
+    } else {
+      chip.removeAttribute('aria-current');
+    }
+    chip.classList.toggle('done', i < currentStep);
+  });
+
+  const activeChip = chips[currentStep];
+  if (activeChip && activeChip.scrollIntoView) {
+    activeChip.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+  }
+
+  // Prev / Next button states
+  $('btnPrev').disabled = currentStep === 0;
+  $('btnNext').disabled = currentStep === total - 1;
+
+  // Play / Pause text and icon
+  $('btnPlayPauseText').textContent = isPlaying ? dict.pause : dict.play;
+  $('playPauseIcon').innerHTML = isPlaying
+    ? `<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>`
+    : `<polygon points="5 3 19 12 5 21 5 3"/>`;
+}
+
+function goToStep(index) {
+  currentStep = Math.max(0, Math.min(STEPS.length - 1, index));
+  completedReps = 0; // reset wash tracker for new step
+  renderStep();
+  if (isPlaying) {
+    startStepProgress();
+  }
+}
+
+/* ==========================================================================
+   AUTO-PLAY SIMULATION ENGINE
+   ========================================================================== */
+function startStepProgress() {
+  const bar = $('playProgressBar');
+  bar.style.transition = 'none';
+  bar.style.width = '0%';
+  void bar.offsetWidth; // force reflow
+
+  bar.style.transition = `width ${STEP_SECONDS}s linear`;
+  bar.style.width = '100%';
+
+  clearTimeout(playTimer);
+  playTimer = setTimeout(() => {
+    if (currentStep < STEPS.length - 1) {
+      goToStep(currentStep + 1);
+    } else {
+      pausePlayMode();
+    }
+  }, STEP_SECONDS * 1000);
+}
+
+function startPlayMode() {
+  if (currentStep === STEPS.length - 1) currentStep = 0;
+  isPlaying = true;
+  renderStep();
+  startStepProgress();
+}
+
+function pausePlayMode() {
+  isPlaying = false;
+  clearTimeout(playTimer);
+  const bar = $('playProgressBar');
+  bar.style.transition = 'none';
+  bar.style.width = '0%';
+  renderStep();
+}
+
+/* ==========================================================================
+   Dua Audio Pronunciation (Web Speech API with Fallback)
+   ========================================================================== */
+function playDuaRecitation() {
+  const stepConfig = STEPS[currentStep];
+  if (!stepConfig || !stepConfig.dua) return;
+
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(stepConfig.dua);
+    utterance.lang = 'ar-SA';
+    utterance.rate = 0.82; // dignified slower recitation rate
+    utterance.pitch = 1.0;
+
+    // Try finding Arabic voice
+    const voices = window.speechSynthesis.getVoices();
+    const arVoice = voices.find(v => v.lang.startsWith('ar'));
+    if (arVoice) utterance.voice = arVoice;
+
+    window.speechSynthesis.speak(utterance);
+  } else {
+    alert(stepConfig.dua);
+  }
+}
+
+/* ==========================================================================
+   VIEW MODES SWITCHING (INTERACTIVE vs VIDEO)
+   ========================================================================== */
+function setViewMode(mode) {
+  activeMode = mode;
+  const isInteractive = mode === 'interactive';
+
+  $('tabInteractive').classList.toggle('active', isInteractive);
+  $('tabInteractive').setAttribute('aria-selected', isInteractive);
+
+  $('tabVideo').classList.toggle('active', !isInteractive);
+  $('tabVideo').setAttribute('aria-selected', !isInteractive);
+
+  if (isInteractive) {
+    $('interactiveView').style.display = 'grid';
+    $('videoView').classList.remove('active');
+    $('officialVideoPlayer').pause();
+  } else {
+    pausePlayMode();
+    $('interactiveView').style.display = 'none';
+    $('videoView').classList.add('active');
+    $('officialVideoPlayer').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+/* ==========================================================================
+   COMMUNITY RATINGS & FEEDBACK
+   ========================================================================== */
+function renderStars() {
+  const container = $('starContainer');
+  container.innerHTML = '';
+
+  for (let i = 1; i <= 5; i++) {
+    const star = document.createElement('button');
+    star.className = 'star-btn' + (i <= currentRating ? ' active' : '');
+    star.setAttribute('type', 'button');
+    star.setAttribute('aria-label', `${i} of 5 stars`);
+    star.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`;
+
+    star.addEventListener('click', () => {
+      currentRating = i;
+      renderStars();
+    });
+
+    container.appendChild(star);
+  }
+}
+
+function loadStoredReviews() {
+  try {
+    return JSON.parse(store.get('wudu-guide-reviews') || '[]');
+  } catch (e) {
+    return [];
+  }
+}
+
+function renderComments() {
+  const feed = $('commentsFeed');
+  feed.innerHTML = '';
+  const list = loadStoredReviews();
+
+  if (!list.length) {
+    // Default initial sample endorsement review
+    list.push({
+      rating: 5,
+      name: 'عبدالله السعيد',
+      comment: 'ما شاء الله تبارك الله، تطبيق تعليمي رائع وواضح جداً، جزاكم الله خيراً ونفع بكم.',
+      date: 'منذ يومين'
+    });
+  }
+
+  list.slice(-5).reverse().forEach(item => {
+    const bubble = document.createElement('div');
+    bubble.className = 'comment-bubble';
+
+    const header = document.createElement('div');
+    header.className = 'comment-bubble-header';
+
+    const author = document.createElement('span');
+    author.className = 'comment-author';
+    author.textContent = item.name || 'زائر كريم';
+
+    const stars = document.createElement('span');
+    stars.className = 'comment-stars';
+    stars.textContent = '★'.repeat(item.rating || 5);
+
+    header.append(author, stars);
+
+    const body = document.createElement('p');
+    body.textContent = item.comment;
+
+    bubble.append(header, body);
+    feed.appendChild(bubble);
+  });
+}
+
+function submitFeedback() {
+  const dict = I18N[currentLang];
+  const toast = $('feedbackStatus');
+
+  if (!currentRating) {
+    toast.textContent = dict.needRateMsg;
+    toast.style.color = '#E05D52';
+    return;
+  }
+
+  const commentText = $('feedbackComment').value.trim();
+  const authorName = $('feedbackName').value.trim();
+
+  const reviews = loadStoredReviews();
+  reviews.push({
+    rating: currentRating,
+    name: authorName || (currentLang === 'ar' ? 'زائر كريم' : 'Valued Visitor'),
+    comment: commentText || (currentLang === 'ar' ? 'تقييم ممتاز، بارك الله فيكم.' : 'Excellent guide, highly recommended!'),
+    date: new Date().toLocaleDateString()
+  });
+
+  store.set('wudu-guide-reviews', JSON.stringify(reviews));
+
+  $('feedbackComment').value = '';
+  currentRating = 0;
+  renderStars();
+  renderComments();
+
+  toast.textContent = dict.sentMsg;
+  toast.style.color = 'var(--water-primary)';
+  setTimeout(() => { toast.textContent = ''; }, 5000);
+}
+
+/* ==========================================================================
+   QR CODE & SHARE MODAL
+   ========================================================================== */
+let qrCodeInstance = null;
+
+function generateQRCode() {
+  const container = $('qrcode-container');
+  container.innerHTML = '';
+  const currentUrl = window.location.href;
+
+  if (typeof QRCode !== 'undefined') {
+    qrCodeInstance = new QRCode(container, {
+      text: currentUrl,
+      width: 180,
+      height: 180,
+      colorDark: "#082228",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  } else {
+    // Fallback: render dynamic SVG QR API image
+    const img = document.createElement('img');
+    img.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(currentUrl)}`;
+    img.alt = 'QR Code';
+    img.width = 180;
+    img.height = 180;
+    container.appendChild(img);
+  }
+
+  // Wire social buttons
+  const shareText = encodeURIComponent(`${I18N[currentLang].title} - ${I18N[currentLang].brand}`);
+  const shareUrl = encodeURIComponent(currentUrl);
+
+  $('shareWhatsApp').href = `https://api.whatsapp.com/send?text=${shareText}%20${shareUrl}`;
+  $('shareTelegram').href = `https://t.me/share/url?url=${shareUrl}&text=${shareText}`;
+  $('shareTwitter').href = `https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}`;
+}
+
+function openShareDialog() {
+  generateQRCode();
+  $('shareModal').classList.add('open');
+  $('copyFeedbackToast').textContent = '';
+}
+
+function closeShareDialog() {
+  $('shareModal').classList.remove('open');
+}
+
+async function copyDirectLink() {
+  const dict = I18N[currentLang];
+  const toast = $('copyFeedbackToast');
+  try {
+    await navigator.clipboard.writeText(window.location.href);
+    toast.textContent = dict.copiedMsg;
+    toast.style.color = 'var(--water-primary)';
+  } catch (err) {
+    toast.textContent = dict.copyFailMsg;
+    toast.style.color = '#E05D52';
+  }
+}
+
+/* ==========================================================================
+   DARK / LIGHT THEME TOGGLE
+   ========================================================================== */
+function initTheme() {
+  const saved = store.get('wudu-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.dataset.theme = theme;
+  updateThemeIcon(theme);
+}
+
+function toggleTheme() {
+  const current = document.documentElement.dataset.theme;
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  store.set('wudu-theme', next);
+  updateThemeIcon(next);
+}
+
+function updateThemeIcon(theme) {
+  const icon = $('themeIcon');
+  if (theme === 'dark') {
+    // Sun icon for switching to light
+    icon.innerHTML = `<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>`;
+  } else {
+    // Moon icon for switching to dark
+    icon.innerHTML = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
+  }
+}
+
+/* ==========================================================================
+   EVENT LISTENERS INITIALIZATION
+   ========================================================================== */
+function setupEventListeners() {
+  // Navigation
+  $('btnPrev').addEventListener('click', () => {
+    pausePlayMode();
+    goToStep(currentStep - 1);
+  });
+
+  $('btnNext').addEventListener('click', () => {
+    pausePlayMode();
+    goToStep(currentStep + 1);
+  });
+
+  $('btnPlayPause').addEventListener('click', () => {
+    if (isPlaying) {
+      pausePlayMode();
+    } else {
+      startPlayMode();
+    }
+  });
+
+  // Dua Audio
+  $('playDuaAudio').addEventListener('click', playDuaRecitation);
+
+  // View Mode Tabs
+  $('tabInteractive').addEventListener('click', () => setViewMode('interactive'));
+  $('tabVideo').addEventListener('click', () => setViewMode('video'));
+  $('btnReturnToInteractive').addEventListener('click', () => setViewMode('interactive'));
+
+  // Language buttons
+  document.querySelectorAll('#langSelector button').forEach(b => {
+    b.addEventListener('click', () => {
+      const selected = b.dataset.l;
+      if (selected !== currentLang) {
+        currentLang = selected;
+        currentStep = 0;      // always restart from step 1 on language change
+        completedReps = 0;
+        pausePlayMode();
+        store.set('wudu-lang', currentLang);
+        renderApp();
+      }
+    });
+  });
+
+  // Modal Share
+  $('openShareModal').addEventListener('click', openShareDialog);
+  $('closeShareModal').addEventListener('click', closeShareDialog);
+  $('shareModal').addEventListener('click', (e) => {
+    if (e.target === $('shareModal')) closeShareDialog();
+  });
+  $('btnCopyUrl').addEventListener('click', copyDirectLink);
+
+  // Theme Toggle
+  $('themeToggle').addEventListener('click', toggleTheme);
+
+  // Feedback Submission
+  $('submitFeedbackBtn').addEventListener('click', submitFeedback);
+
+  // Keyboard navigation (Left / Right Arrow)
+  window.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    const isRtl = document.documentElement.dir === 'rtl';
+    if (e.key === 'ArrowRight') {
+      isRtl ? $('btnPrev').click() : $('btnNext').click();
+    } else if (e.key === 'ArrowLeft') {
+      isRtl ? $('btnNext').click() : $('btnPrev').click();
+    } else if (e.key === 'Escape') {
+      closeShareDialog();
+    }
+  });
+}
+
+/* ==========================================================================
+   APPLICATION ENTRY POINT
+   ========================================================================== */
+initTheme();
+renderApp();
+setupEventListeners();
+</script>
+</body>
+</html>
