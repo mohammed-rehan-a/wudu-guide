@@ -668,6 +668,155 @@ svg#fig {
   height: 14px;
 }
 
+
+/* Step Voice Narration Bar */
+.step-voice-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 8px 14px;
+  background: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.btn-speech {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(14, 138, 146, 0.12);
+  border: 1px solid var(--water-primary);
+  border-radius: var(--radius-pill);
+  color: var(--water-primary);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-speech:hover {
+  background: var(--water-primary);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(14, 138, 146, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-speech.speaking {
+  background: var(--water-primary);
+  color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(14, 138, 146, 0.3);
+}
+
+.speech-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+}
+
+.speaker-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.sound-wave-bars {
+  display: none;
+  align-items: center;
+  gap: 2px;
+  height: 14px;
+}
+
+.btn-speech.speaking .sound-wave-bars {
+  display: inline-flex;
+}
+
+.btn-speech.speaking .speaker-icon {
+  display: none;
+}
+
+.sound-wave-bars i {
+  display: block;
+  width: 2.5px;
+  height: 100%;
+  background: currentColor;
+  border-radius: 2px;
+  animation: speechWave 0.9s ease-in-out infinite;
+}
+
+.sound-wave-bars i:nth-child(1) { animation-delay: 0.0s; height: 35%; }
+.sound-wave-bars i:nth-child(2) { animation-delay: 0.2s; height: 85%; }
+.sound-wave-bars i:nth-child(3) { animation-delay: 0.4s; height: 55%; }
+.sound-wave-bars i:nth-child(4) { animation-delay: 0.1s; height: 100%; }
+
+@keyframes speechWave {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+.auto-speak-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: var(--ink-secondary);
+  user-select: none;
+}
+
+.auto-speak-toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 18px;
+  background: var(--border-subtle);
+  border-radius: 20px;
+  transition: 0.25s ease;
+}
+
+.toggle-slider::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: 0.25s ease;
+}
+
+[dir="rtl"] .toggle-slider::after {
+  left: auto;
+  right: 2px;
+}
+
+.auto-speak-toggle input:checked + .toggle-slider {
+  background: var(--water-primary);
+}
+
+.auto-speak-toggle input:checked + .toggle-slider::after {
+  transform: translateX(16px);
+}
+
+[dir="rtl"] .auto-speak-toggle input:checked + .toggle-slider::after {
+  transform: translateX(-16px);
+}
+
 /* Step Auto-progress bar */
 .progress-track {
   height: 5px;
@@ -1593,6 +1742,30 @@ footer {
             <p class="step-instruction" id="stepInstruction">انوِ الوضوء بقلبك، ثم قل: بسم الله.</p>
           </div>
 
+          <!-- Step Voice Narration Bar -->
+          <div class="step-voice-bar">
+            <button class="btn-speech" id="btnSpeakInstruction" type="button" aria-label="Listen to step instruction">
+              <span class="speech-icon-wrap">
+                <svg class="speaker-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                </svg>
+                <span class="sound-wave-bars" aria-hidden="true">
+                  <i></i><i></i><i></i><i></i>
+                </span>
+              </span>
+              <span id="speechButtonText">استمع للشرح الصوتي</span>
+            </button>
+
+            <label class="auto-speak-toggle" title="Auto-speak instruction when moving to each slide">
+              <input type="checkbox" id="autoSpeakCheckbox" checked>
+              <span class="toggle-slider"></span>
+              <span id="autoSpeakLabel">نطق تلقائي لكل خطوة</span>
+            </label>
+          </div>
+
+
           <!-- Supplication / Dua Display -->
           <div class="dua-box" id="duaBox" hidden>
             <div class="dua-arabic" id="duaArabic"></div>
@@ -1902,6 +2075,9 @@ const I18N = {
     repLabel: 'الغسلات:',
     repText: { 1: 'مرة واحدة', 3: 'ثلاث مرات' },
     audioListen: 'استمع للنطق الصحيح',
+    audioInstruction: 'استمع للشرح الصوتي',
+    speakingText: 'جاري القراءة...',
+    autoSpeakLabel: 'نطق صوتي تلقائي',
     prev: 'السابق',
     next: 'التالي',
     play: 'تشغيل تلقائي',
@@ -2072,6 +2248,9 @@ const I18N = {
     repLabel: 'Répétitions :',
     repText: { 1: 'Une fois', 3: 'Trois fois' },
     audioListen: 'Écouter la prononciation',
+    audioInstruction: "Écouter l'instruction",
+    speakingText: 'Lecture vocale...',
+    autoSpeakLabel: 'Lecture vocale automatique',
     prev: 'Précédent',
     next: 'Suivant',
     play: 'Lecture auto',
@@ -2157,6 +2336,9 @@ const I18N = {
     repLabel: 'دھونا:',
     repText: { 1: 'ایک بار', 3: 'تین بار' },
     audioListen: 'صحیح تلفظ سنیں',
+    audioInstruction: 'ہدایت سنیں',
+    speakingText: 'آواز جاری ہے...',
+    autoSpeakLabel: 'ہر قدم کی خودکار آواز',
     prev: 'پچھلا',
     next: 'اگلا',
     play: 'خودکار چلائیں',
@@ -2687,6 +2869,14 @@ function renderApp() {
   $('footerText').textContent = dict.footText;
   $('footerCopyright').textContent = dict.footCopy;
 
+  // Speech UI localization
+  if ($('speechButtonText')) {
+    $('speechButtonText').textContent = isSpeaking ? (dict.speakingText || 'Speaking...') : (dict.audioInstruction || 'Listen to Instruction');
+  }
+  if ($('autoSpeakLabel')) {
+    $('autoSpeakLabel').textContent = dict.autoSpeakLabel || 'Auto-speak each step';
+  }
+
   // Re-render Step Chips
   renderStepChips();
 
@@ -2804,6 +2994,10 @@ function goToStep(index) {
   currentStep = Math.max(0, Math.min(STEPS.length - 1, index));
   completedReps = 0; // reset wash tracker for new step
   renderStep();
+  
+  // Speak the instruction for this slide if auto-speak is enabled
+  speakCurrentStep(false);
+  
   if (isPlaying) {
     startStepProgress();
   }
@@ -2841,6 +3035,7 @@ function startPlayMode() {
 function pausePlayMode() {
   isPlaying = false;
   clearTimeout(playTimer);
+  stopSpeech();
   const bar = $('playProgressBar');
   bar.style.transition = 'none';
   bar.style.width = '0%';
@@ -2848,8 +3043,133 @@ function pausePlayMode() {
 }
 
 /* ==========================================================================
-   Dua Audio Pronunciation (Web Speech API with Fallback)
+   SPEECH SYNTHESIS ENGINE (MULTILINGUAL VOICE NARRATION FOR EACH SLIDE)
    ========================================================================== */
+const LANG_VOICE_MAP = {
+  ar: 'ar-SA',
+  en: 'en-US',
+  fr: 'fr-FR',
+  ur: 'ur-PK',
+  kn: 'kn-IN',
+  ta: 'ta-IN',
+  te: 'te-IN',
+  mr: 'mr-IN'
+};
+
+let isSpeaking = false;
+let autoSpeakEnabled = store.get('wudu-autospeak') !== 'false';
+let cachedVoices = [];
+
+function loadVoices() {
+  if (!('speechSynthesis' in window)) return;
+  cachedVoices = window.speechSynthesis.getVoices() || [];
+}
+
+if ('speechSynthesis' in window) {
+  loadVoices();
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+}
+
+function getVoiceForLang(langCode) {
+  if (!cachedVoices.length) loadVoices();
+  const target = (LANG_VOICE_MAP[langCode] || 'en-US').toLowerCase();
+  
+  // 1. Exact locale match
+  let found = cachedVoices.find(v => (v.lang || '').replace('_', '-').toLowerCase() === target);
+  if (found) return found;
+
+  // 2. Language prefix match
+  found = cachedVoices.find(v => (v.lang || '').toLowerCase().startsWith(langCode));
+  if (found) return found;
+
+  // 3. Fallbacks for Indian/Urdu subcontinent voices
+  if (langCode === 'ur') {
+    found = cachedVoices.find(v => (v.lang || '').toLowerCase().startsWith('hi'));
+    if (found) return found;
+  }
+  return null;
+}
+
+function stopSpeech() {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+  }
+  isSpeaking = false;
+  updateSpeechUI(false);
+}
+
+function updateSpeechUI(active) {
+  const btn = $('btnSpeakInstruction');
+  if (!btn) return;
+  btn.classList.toggle('speaking', active);
+  const dict = I18N[currentLang] || I18N.ar;
+  const label = $('speechButtonText');
+  if (label) {
+    label.textContent = active ? (dict.speakingText || 'جاري القراءة...') : (dict.audioInstruction || 'استمع للشرح الصوتي');
+  }
+}
+
+function speakCurrentStep(userInitiated = false) {
+  if (!('speechSynthesis' in window)) return;
+
+  if (!userInitiated && !autoSpeakEnabled) {
+    return;
+  }
+
+  const dict = I18N[currentLang] || I18N.ar;
+  const stepItem = dict.steps ? dict.steps[currentStep] : null;
+  if (!stepItem) return;
+
+  const title = stepItem[0];
+  const instruction = stepItem[1];
+  const stepConfig = STEPS[currentStep];
+
+  // Narration text: Step title followed by instruction
+  let fullText = `${title}. ${instruction}`;
+  if (currentLang === 'ar' && stepConfig && stepConfig.dua) {
+    fullText += `. ${stepConfig.dua}`;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(fullText);
+  const targetLocale = LANG_VOICE_MAP[currentLang] || 'en-US';
+  utterance.lang = targetLocale;
+
+  const voice = getVoiceForLang(currentLang);
+  if (voice) {
+    utterance.voice = voice;
+  }
+
+  utterance.rate = currentLang === 'ar' ? 0.88 : 0.94;
+  utterance.pitch = 1.0;
+
+  utterance.onstart = () => {
+    isSpeaking = true;
+    updateSpeechUI(true);
+  };
+
+  utterance.onend = () => {
+    isSpeaking = false;
+    updateSpeechUI(false);
+  };
+
+  utterance.onerror = () => {
+    isSpeaking = false;
+    updateSpeechUI(false);
+  };
+
+  window.speechSynthesis.speak(utterance);
+}
+
+function toggleSpeech() {
+  if (isSpeaking) {
+    stopSpeech();
+  } else {
+    speakCurrentStep(true);
+  }
+}
+
 function playDuaRecitation() {
   const stepConfig = STEPS[currentStep];
   if (!stepConfig || !stepConfig.dua) return;
@@ -2858,19 +3178,22 @@ function playDuaRecitation() {
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(stepConfig.dua);
     utterance.lang = 'ar-SA';
-    utterance.rate = 0.82; // dignified slower recitation rate
+    utterance.rate = 0.82;
     utterance.pitch = 1.0;
 
-    // Try finding Arabic voice
-    const voices = window.speechSynthesis.getVoices();
-    const arVoice = voices.find(v => v.lang.startsWith('ar'));
+    const arVoice = getVoiceForLang('ar');
     if (arVoice) utterance.voice = arVoice;
+
+    utterance.onstart = () => { isSpeaking = true; updateSpeechUI(true); };
+    utterance.onend = () => { isSpeaking = false; updateSpeechUI(false); };
+    utterance.onerror = () => { isSpeaking = false; updateSpeechUI(false); };
 
     window.speechSynthesis.speak(utterance);
   } else {
     alert(stepConfig.dua);
   }
 }
+
 
 /* ==========================================================================
    VIEW MODES SWITCHING (INTERACTIVE vs VIDEO)
@@ -3118,9 +3441,25 @@ function setupEventListeners() {
   // Dua Audio
   $('playDuaAudio').addEventListener('click', playDuaRecitation);
 
+  // Step Voice Narration
+  $('btnSpeakInstruction').addEventListener('click', toggleSpeech);
+  $('autoSpeakCheckbox').checked = autoSpeakEnabled;
+  $('autoSpeakCheckbox').addEventListener('change', (e) => {
+    autoSpeakEnabled = e.target.checked;
+    store.set('wudu-autospeak', autoSpeakEnabled ? 'true' : 'false');
+    if (autoSpeakEnabled && !isSpeaking) {
+      speakCurrentStep(true);
+    } else if (!autoSpeakEnabled && isSpeaking) {
+      stopSpeech();
+    }
+  });
+
   // View Mode Tabs
   $('tabInteractive').addEventListener('click', () => setViewMode('interactive'));
-  $('tabVideo').addEventListener('click', () => setViewMode('video'));
+  $('tabVideo').addEventListener('click', () => {
+    setViewMode('video');
+    stopSpeech();
+  });
   $('btnReturnToInteractive').addEventListener('click', () => setViewMode('interactive'));
 
   // Language buttons
@@ -3132,6 +3471,7 @@ function setupEventListeners() {
         currentStep = 0;      // always restart from step 1 on language change
         completedReps = 0;
         pausePlayMode();
+        stopSpeech();
         store.set('wudu-lang', currentLang);
         renderApp();
       }
