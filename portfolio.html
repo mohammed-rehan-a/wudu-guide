@@ -159,15 +159,23 @@
     }
 
     .nav-logo {
-
+      display: flex;
+      align-items: center;
+      gap: .6rem;
       font-family: var(--font-mono);
-
       font-size: .85rem;
-
       color: var(--accent);
-
       letter-spacing: .08em;
+    }
 
+    .nav-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 15%;
+      border: 1.5px solid var(--accent);
+      box-shadow: 0 0 10px rgba(0, 220, 200, 0.3);
     }
 
     .nav-logo span { color: var(--text-dim); }
@@ -372,6 +380,42 @@
 
       padding: 0 clamp(1.5rem,8vw,6rem);
 
+    }
+
+    .hero-avatar-badge {
+      display: inline-flex;
+      position: relative;
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      animation: fadeUp .6s .1s forwards;
+    }
+
+    .hero-avatar-img {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 15%;
+      border: 2.5px solid var(--accent);
+      box-shadow: 0 0 30px rgba(0, 220, 200, 0.4), 0 8px 24px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero-avatar-badge:hover .hero-avatar-img {
+      transform: scale(1.06);
+      box-shadow: 0 0 40px rgba(0, 220, 200, 0.6), 0 12px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    .avatar-status-pulse {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      width: 18px;
+      height: 18px;
+      background: #10b981;
+      border: 3px solid var(--bg);
+      border-radius: 50%;
+      box-shadow: 0 0 10px #10b981;
     }
 
     .hero-greeting {
@@ -618,44 +662,47 @@
 
     }
 
-    .about-initials {
-
-      position: absolute; inset: 0;
-
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-
-      gap: .5rem;
-
+    .about-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
     }
 
-    .initials-text {
+    .about-card-frame:hover .about-photo {
+      transform: scale(1.05);
+    }
 
+    .about-photo-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2.5rem 1.25rem 1.25rem;
+      background: linear-gradient(to top, rgba(8, 11, 16, 0.95) 0%, rgba(8, 11, 16, 0.6) 60%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      z-index: 2;
+    }
+
+    .photo-name {
       font-family: var(--font-head);
-
-      font-size: clamp(4rem, 10vw, 7rem);
-
-      font-weight: 800;
-
-      color: transparent;
-
-      -webkit-text-stroke: 1px var(--accent);
-
-      opacity: .6;
-
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #FFFFFF;
+      letter-spacing: 0.02em;
     }
 
-    .initials-sub {
-
+    .photo-title {
       font-family: var(--font-mono);
-
-      font-size: .7rem;
-
-      letter-spacing: .25em;
-
-      color: var(--muted);
-
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-
     }
 
     .about-corner {
@@ -1508,7 +1555,7 @@
 
   <nav id="navbar">
 
-    <div class="nav-logo"><span>mr/</span>portfolio</div>
+    <div class="nav-logo"><img src="profile.jpg" alt="Mohammed Rehan A" class="nav-avatar"><span>mr/</span>portfolio</div>
 
     <ul class="nav-links">
 
@@ -1565,6 +1612,11 @@
   <div id="home">
 
     <div class="hero-inner">
+
+      <div class="hero-avatar-badge">
+        <img src="profile.jpg" alt="Mohammed Rehan A" class="hero-avatar-img">
+        <span class="avatar-status-pulse" title="Available for hire & internships"></span>
+      </div>
 
       <p class="hero-greeting">👋 Hello, World — I'm</p>
 
@@ -1624,11 +1676,13 @@
 
           <div class="about-corner br"></div>
 
-          <div class="about-initials">
+          <img src="profile.jpg" alt="Mohammed Rehan A" class="about-photo">
 
-            <div class="initials-text">MRA</div>
+          <div class="about-photo-overlay">
 
-            <div class="initials-sub">Developer · IoT · CS</div>
+            <span class="photo-name">Mohammed Rehan A</span>
+
+            <span class="photo-title">Full-Stack &amp; IoT Developer</span>
 
           </div>
 
@@ -1786,7 +1840,7 @@
 
       <!-- Featured: Citizen Issue Reporting -->
 
-      <div class="project-card project-featured reveal">
+      <a href="https://tumakuru-issue-3.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-card project-featured reveal" style="text-decoration: none; cursor: pointer;">
 
         <div class="project-visual">
 
@@ -1796,19 +1850,30 @@
 
         <div class="project-content">
 
-          <p class="project-num">01 / Featured Project</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: .25rem;">
+            <p class="project-num" style="margin-bottom: 0;">01 / Featured Project</p>
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 600;">
+              Live Demo ↗
+            </span>
+          </div>
 
-          <h3>Citizen Issue Reporting System</h3>
+          <h3 style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
+            <span>Citizen Issue Reporting System</span>
+            <span style="font-size: 1.1rem; color: var(--accent);">↗</span>
+          </h3>
 
           <p>A Django-based civic web platform enabling citizens to report and track local issues. Designed with full authentication, admin dashboards, and a relational database backend to manage issue lifecycle from submission to resolution.</p>
 
-          <span class="project-role">⚙️ Full-Stack Developer — Frontend, Backend & Database</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;">
+            <span class="project-role">⚙️ Full-Stack Developer — Frontend, Backend & Database</span>
+            <span class="project-role" style="background: rgba(0,220,200,.12); border-color: rgba(0,220,200,.3); color: var(--accent);">🌐 Live Deployment</span>
+          </div>
 
         </div>
 
         <div class="project-glow"></div>
 
-      </div>
+      </a>
 
 
 
